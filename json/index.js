@@ -80,13 +80,8 @@ function loadServiceAccount() {
     return envServiceAccount;
   }
 
-  const serviceAccountPath = path.join(__dirname, "serviceAccount.json");
-  if (fs.existsSync(serviceAccountPath)) {
-    return JSON.parse(fs.readFileSync(serviceAccountPath, "utf8"));
-  }
-
   throw new Error(
-    "Firebase Admin credential tidak ditemukan. Isi json/.env atau sediakan json/serviceAccount.json lokal."
+    "Firebase Admin credential tidak ditemukan. Isi json/.env sesuai template json/serviceAccount.json."
   );
 }
 
