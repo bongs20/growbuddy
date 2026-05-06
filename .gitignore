@@ -1,0 +1,6 @@
+.codex
+.agents/
+json/.env
+json/node_modules/
+json/serviceAccount.json
+growbuddy/android/build/

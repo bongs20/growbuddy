@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Menghubungkan... | Halo, Plant Hero!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#ffe088",
+                      "tertiary": "#735c00",
+                      "surface-variant": "#e8e3cd",
+                      "primary": "#376a25",
+                      "on-tertiary-fixed": "#241a00",
+                      "surface-container-highest": "#e8e3cd",
+                      "outline-variant": "#c2c9b9",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "inverse-primary": "#9cd683",
+                      "surface-dim": "#e0dac5",
+                      "on-surface": "#1e1c0f",
+                      "on-secondary-fixed-variant": "#0d503f",
+                      "secondary-container": "#aeedd5",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#333122",
+                      "background": "#fff9e7",
+                      "surface-bright": "#fff9e7",
+                      "on-secondary-fixed": "#002118",
+                      "inverse-on-surface": "#f7f1db",
+                      "tertiary-fixed-dim": "#e7c353",
+                      "surface-container-high": "#eee8d3",
+                      "on-primary-fixed": "#042100",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#376a25",
+                      "on-error-container": "#93000a",
+                      "primary-fixed-dim": "#9cd683",
+                      "surface-container-low": "#faf4de",
+                      "primary-fixed": "#b8f29d",
+                      "outline": "#72796c",
+                      "secondary-fixed-dim": "#96d3bd",
+                      "on-surface-variant": "#42493d",
+                      "on-primary-container": "#1c4e0b",
+                      "surface-container": "#f4eed8",
+                      "secondary-fixed": "#b1efd8",
+                      "on-tertiary-container": "#544200",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary": "#2c6956",
+                      "surface": "#fff9e7",
+                      "primary-container": "#88c070",
+                      "on-primary-fixed-variant": "#1f510e",
+                      "tertiary-container": "#d1ae40",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#316d5b",
+                      "on-primary": "#ffffff",
+                      "on-background": "#1e1c0f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "container-padding": "20px",
+                      "xl": "32px",
+                      "base": "8px",
+                      "gutter": "16px",
+                      "xs": "4px",
+                      "sm": "12px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "button": ["Plus Jakarta Sans"],
+                      "h2": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-caps": ["Plus Jakarta Sans"],
+                      "h1": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "button": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .squishy-shadow {
+            box-shadow: 0 4px 20px 0 rgba(136, 192, 112, 0.08);
+        }
+        .loading-pulse {
+            opacity: 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex flex-col items-center justify-center p-container-padding font-body-md text-on-background">
+<!-- Loading Container -->
+<main class="w-full max-w-md flex flex-col items-center justify-center space-y-xl">
+<!-- Illustration Section -->
+<div class="relative flex items-center justify-center w-64 h-64">
+<!-- Decorative soft shadows/blobs behind the plant -->
+<div class="absolute inset-0 bg-primary-container/20 rounded-full blur-3xl"></div>
+<!-- Main Plant Illustration -->
+<div class="relative z-10 p-lg bg-surface-container-lowest rounded-[48px] squishy-shadow border-4 border-white">
+<img class="w-40 h-40 object-contain" data-alt="A charming digital illustration of a small, vibrant green seedling in a terracotta pot, styled with soft round edges and a friendly character-like aesthetic. The lighting is high-key and warm, perfectly matching a soft cream background with hints of pastel mint green shadows. The visual style is tactile and welcoming, evoking the nurturing interaction of a modern plant care application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3QgBAztqnGhjp1MSmf5SwZBYam4SYreh43yi2Gj0OU0gwRRmyUHpSlr5KwRdy7e0TBIoROO5rvMcUhUIl5OzJiA9azpY42DrlXUblEeKfVkY3v-UbE1o1ARm8yjDtqnpRTPrBjrrj3B7D7NIGu4pHmQgsa0-EaghcPH9e-6g4zhwxcMIXmb6wExDuvk0uI4eNXzVP7TaU-50E8S-bksdcNQUBC7_Dbl7BSqkh0ROQaC9i_aRVR5jvivgnF6rsqffndRWTMwGzyfg"/>
+</div>
+<!-- Floating Loading Dots (Visual Representation) -->
+<div class="absolute -top-4 -right-2 bg-tertiary-fixed text-on-tertiary-fixed p-sm rounded-full squishy-shadow">
+<span class="material-symbols-outlined text-[24px]">colors_spark</span>
+</div>
+<div class="absolute -bottom-2 -left-4 bg-secondary-container text-on-secondary-container p-sm rounded-full squishy-shadow">
+<span class="material-symbols-outlined text-[24px]">water_drop</span>
+</div>
+</div>
+<!-- Text Guidance -->
+<div class="text-center space-y-md">
+<h1 class="font-h1 text-h1 text-primary">
+                Halo, Plant Hero!
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant flex items-center justify-center gap-xs">
+<span>Menghubungkan aplikasi</span>
+<span class="flex space-x-1">
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full opacity-40"></span>
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full opacity-70"></span>
+<span class="w-1.5 h-1.5 bg-primary-container rounded-full"></span>
+</span>
+</p>
+</div>
+<!-- Status Card (Tactile) -->
+<div class="w-full bg-surface-container-low rounded-[32px] p-lg squishy-shadow border border-white/50 flex items-center gap-md">
+<div class="w-12 h-12 bg-primary-fixed rounded-2xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-weight="fill">sensors</span>
+</div>
+<div class="flex-1">
+<p class="font-label-caps text-label-caps text-outline uppercase tracking-widest">Status Koneksi</p>
+<p class="font-button text-button text-primary">Sinkronisasi Data IoT...</p>
+</div>
+<div class="flex items-center">
+<div class="w-3 h-3 bg-tertiary-container rounded-full"></div>
+</div>
+</div>
+<!-- Encouraging Footer Microcopy -->
+<div class="pt-xl text-center">
+<p class="font-body-md text-body-md text-outline italic">
+                "Hampir sampai! Tanamanmu merindukanmu."
+            </p>
+</div>
+</main>
+<!-- Branding Element -->
+<div class="fixed bottom-xl flex flex-col items-center">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-weight="fill">eco</span>
+<span class="font-h2 text-h2 text-primary tracking-tighter">HaloPlant</span>
+</div>
+<p class="text-[10px] font-label-caps text-outline-variant uppercase tracking-[0.2em] mt-xs">v2.4.0 Stable Connection</p>
+</div>
+</body></html>

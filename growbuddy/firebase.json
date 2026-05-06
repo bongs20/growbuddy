@@ -1,0 +1,28 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "grow-buddy-34262",
+          "appId": "1:1064950733261:android:512d9e9770fcb3c7ea4c84",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "grow-buddy-34262",
+          "configurations": {
+            "android": "1:1064950733261:android:512d9e9770fcb3c7ea4c84",
+            "ios": "1:1064950733261:ios:719c09d5f252fe87ea4c84",
+            "macos": "1:1064950733261:ios:719c09d5f252fe87ea4c84",
+            "web": "1:1064950733261:web:03f446e5fa1ad448ea4c84",
+            "windows": "1:1064950733261:web:e033295fa69321dfea4c84"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffe088",
+                        "tertiary": "#735c00",
+                        "surface-variant": "#e8e3cd",
+                        "primary": "#376a25",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-container-highest": "#e8e3cd",
+                        "outline-variant": "#c2c9b9",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-primary": "#9cd683",
+                        "surface-dim": "#e0dac5",
+                        "on-surface": "#1e1c0f",
+                        "on-secondary-fixed-variant": "#0d503f",
+                        "secondary-container": "#aeedd5",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#333122",
+                        "background": "#fff9e7",
+                        "surface-bright": "#fff9e7",
+                        "on-secondary-fixed": "#002118",
+                        "inverse-on-surface": "#f7f1db",
+                        "tertiary-fixed-dim": "#e7c353",
+                        "surface-container-high": "#eee8d3",
+                        "on-primary-fixed": "#042100",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#376a25",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#9cd683",
+                        "surface-container-low": "#faf4de",
+                        "primary-fixed": "#b8f29d",
+                        "outline": "#72796c",
+                        "secondary-fixed-dim": "#96d3bd",
+                        "on-surface-variant": "#42493d",
+                        "on-primary-container": "#1c4e0b",
+                        "surface-container": "#f4eed8",
+                        "secondary-fixed": "#b1efd8",
+                        "on-tertiary-container": "#544200",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#2c6956",
+                        "surface": "#fff9e7",
+                        "primary-container": "#88c070",
+                        "on-primary-fixed-variant": "#1f510e",
+                        "tertiary-container": "#d1ae40",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#316d5b",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1e1c0f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "container-padding": "20px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "button": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "button": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .squishy-shadow {
+            box-shadow: 0 4px 20px 0 rgba(136, 192, 112, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation (Shell Supressed for Transactional Result) -->
+<header class="flex justify-between items-center px-6 py-4 w-full z-50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A friendly illustrated user avatar profile picture of a young gardener character with a small green sprout on their hat. The artwork is clean, digital, and professional with a soft pastel green background. The style is high-quality 3D claymorphism with soft studio lighting and vibrant saturated colors consistent with a modern mobile app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWKw9W6iI8tYXhCTxyllffk_TH-OxDTHuUNArjpZiboAGZh0dCMCUU9JZJkOElZjhQ06EVwWQ1F0PmbnkjubFlOiPQdz2vBzxj3UyrgUY_2E3Su8BuvBgJWmiT3cYM9CotmZS-_FPJDNNUSP4fERuEwN8YVGRiAD_P6Ba1tg0K6Hip70zcXw0OPGJfH1ynwFJrigKoDssEEmd_Whbrg10HZlCLCOjwgxuwFOH69JMNio3Fr0jZn_Za0RM0kdca7KgOEI3cY0EHr5M"/>
+</div>
+<span class="font-h2 text-body-md text-primary">Level 12</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white/80 squishy-shadow">
+<span class="material-symbols-outlined text-primary">close</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col items-center px-container-padding pt-base pb-xl">
+<!-- Success Celebration Section -->
+<div class="w-full flex flex-col items-center text-center space-y-md">
+<div class="relative w-64 h-64 flex items-center justify-center">
+<!-- Sun Rays / Glow Backdrop -->
+<div class="absolute inset-0 bg-primary-container/20 rounded-full blur-3xl scale-110"></div>
+<!-- Happy Plant Character -->
+<img class="relative z-10 w-48 h-48 drop-shadow-2xl" data-alt="A joyful and adorable 3D character of a succulent plant in a white ceramic pot, featuring a big happy smile and sparkling eyes. The plant character has vibrant green leaves and is surrounded by small floating sparkles and musical notes. The lighting is bright and cheerful with soft, warm yellow and green tones, presented in a high-fidelity 3D claymorphism style against a soft cream background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWi7FllaNmbrdUWLDsolbaDQ1aWd8d9ocMYmlNyuUq3Vkr00HcJKkhvnArqCKx-gPO-u1RBRfsXVb9L8BswVuy3XNW8Ofe1lLE1rQI9Mp63wCEMyENhtVSfC3oN41DowXswc5nFmnHO4T0kmRyjmIWDTSL_L9wcMEEkyR8HHKjUuMzXz4QJsK3dgBsmi9KeziztL7X9LacV6s2iWioRjjyMEQVW42pNF4wObc4Ili75wjq8U2b7O9FvYUGlDB0VpKRWQtJaQOwLes"/>
+<!-- Confetti/Points Badge -->
+<div class="absolute -top-2 -right-2 bg-tertiary-fixed text-on-tertiary-fixed font-h2 px-4 py-2 rounded-full flex items-center gap-1 shadow-lg transform rotate-12">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-button">+10 poin</span>
+</div>
+</div>
+<div class="space-y-xs">
+<h1 class="font-h1 text-h1 text-primary tracking-tight">Berhasil!</h1>
+<p class="font-body-lg text-secondary font-semibold">Penyiraman tepat waktu</p>
+</div>
+</div>
+<!-- Progress Comparison Bento Grid -->
+<div class="w-full mt-xl grid grid-cols-2 gap-md">
+<!-- Moisture Before -->
+<div class="bg-white rounded-[32px] p-md squishy-shadow flex flex-col items-center text-center border-2 border-surface-container">
+<span class="font-label-caps text-outline uppercase tracking-widest mb-xs">SEBELUM</span>
+<div class="relative w-full h-24 flex items-center justify-center overflow-hidden rounded-2xl bg-surface-container-low mb-sm">
+<span class="font-h1 text-h1 text-outline/50 relative z-10">35%</span>
+<div class="absolute bottom-0 left-0 w-full bg-secondary-container/40" style="height: 35%;"></div>
+</div>
+<span class="font-body-md text-outline">Tanaman Haus</span>
+</div>
+<!-- Moisture After -->
+<div class="bg-primary-fixed rounded-[32px] p-md squishy-shadow flex flex-col items-center text-center border-2 border-primary-container">
+<span class="font-label-caps text-on-primary-fixed-variant uppercase tracking-widest mb-xs">SESUDAH</span>
+<div class="relative w-full h-24 flex items-center justify-center overflow-hidden rounded-2xl bg-white/50 mb-sm">
+<span class="font-h1 text-h1 text-primary relative z-10">62%</span>
+<div class="absolute bottom-0 left-0 w-full bg-primary-container" style="height: 62%;"></div>
+</div>
+<span class="font-body-md text-on-primary-fixed-variant font-bold">Wah, segar sekali!</span>
+</div>
+</div>
+<!-- Feedback Card -->
+<div class="w-full mt-gutter bg-secondary-fixed/30 rounded-[32px] p-lg flex items-start gap-4 border border-secondary-fixed/50">
+<div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<h3 class="font-h2 text-button text-secondary">Hidrasi Optimal</h3>
+<p class="font-body-md text-on-secondary-container">Tanamanmu sekarang memiliki kelembapan yang cukup untuk tumbuh sehat hari ini.</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full mt-auto pt-xl space-y-md">
+<button class="w-full bg-primary text-white font-button text-button py-5 rounded-full squishy-shadow flex items-center justify-center gap-2 active:scale-95 transition-transform duration-200">
+                Kembali
+            </button>
+<button class="w-full bg-transparent text-secondary font-button text-button py-5 rounded-full flex items-center justify-center gap-2 hover:bg-secondary/5 transition-colors">
+<span class="material-symbols-outlined">history</span>
+                Lihat Riwayat
+            </button>
+</div>
+</main>
+<!-- Support Spacer for fixed elements if any -->
+<div class="h-8"></div>
+</body></html>

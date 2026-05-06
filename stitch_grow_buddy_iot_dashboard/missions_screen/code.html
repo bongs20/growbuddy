@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffe088",
+                    "tertiary": "#735c00",
+                    "surface-variant": "#e8e3cd",
+                    "primary": "#376a25",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-container-highest": "#e8e3cd",
+                    "outline-variant": "#c2c9b9",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "inverse-primary": "#9cd683",
+                    "surface-dim": "#e0dac5",
+                    "on-surface": "#1e1c0f",
+                    "on-secondary-fixed-variant": "#0d503f",
+                    "secondary-container": "#aeedd5",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#333122",
+                    "background": "#fff9e7",
+                    "surface-bright": "#fff9e7",
+                    "on-secondary-fixed": "#002118",
+                    "inverse-on-surface": "#f7f1db",
+                    "tertiary-fixed-dim": "#e7c353",
+                    "surface-container-high": "#eee8d3",
+                    "on-primary-fixed": "#042100",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#376a25",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#9cd683",
+                    "surface-container-low": "#faf4de",
+                    "primary-fixed": "#b8f29d",
+                    "outline": "#72796c",
+                    "secondary-fixed-dim": "#96d3bd",
+                    "on-surface-variant": "#42493d",
+                    "on-primary-container": "#1c4e0b",
+                    "surface-container": "#f4eed8",
+                    "secondary-fixed": "#b1efd8",
+                    "on-tertiary-container": "#544200",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#2c6956",
+                    "surface": "#fff9e7",
+                    "primary-container": "#88c070",
+                    "on-primary-fixed-variant": "#1f510e",
+                    "tertiary-container": "#d1ae40",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#316d5b",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1e1c0f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "container-padding": "20px",
+                    "xl": "32px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "button": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "button": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .health-bar-gradient {
+            background: linear-gradient(90deg, #ffe088 0%, #88c070 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md pb-32">
+<!-- TopAppBar Shell -->
+<header class="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md fixed top-0 w-full z-50 flex justify-between items-center px-6 py-4 shadow-[0_4px_20px_0_rgba(136,192,112,0.08)]">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden border-2 border-primary shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A friendly male avatar portrait with a soft, warm lighting setup. The character has a cheerful expression, clean-cut features, and is positioned against a vibrant, emerald-green nature-themed background. The visual style is modern, polished, and fits a high-end gardening application aesthetic with a professional color balance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZDN2-L8ImMwwLIl1i9G6Es0PyUFXmwdBXgELIlBxdyeQVUs52kT9a1xl1telbYHLkyTXtS4v9m65e7qtls1mcYyry_QeOz5_IR_j18gVS4wPb-T7Ahy-4miEgGz7ERg2MrszUIJMTtXtr_RAKQq7fQxy11U3x1Hz4Y4CFyZwCZQeoc7Tn62URWIaDeWekrNbqr5lStXoIXHDJMasoMgC44I8UHwrPOEEzvq4p9FQKJbR2MBUL-RbZfB5pOzawDlndx04BHpAL5iQ"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white">
+                    LV.3
+                </div>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-lg text-emerald-600 dark:text-emerald-300 tracking-tight">Halo, Plant Hero!</h1>
+</div>
+<button class="text-emerald-500 dark:text-emerald-400 hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+</button>
+</header>
+<main class="pt-24 px-container-padding space-y-lg">
+<!-- Level & XP Hero Section -->
+<section class="bg-surface-container-low rounded-[32px] p-lg shadow-[0_4px_20px_0_rgba(136,192,112,0.08)]">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<span class="font-label-caps text-primary uppercase block mb-xs">Status Pahlawan</span>
+<h2 class="font-h1 text-primary">Level 3</h2>
+</div>
+<span class="font-body-md text-on-surface-variant font-semibold">1,250 / 2,000 XP</span>
+</div>
+<div class="w-full h-4 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary shadow-[0_0_12px_rgba(55,106,37,0.3)] w-[62.5%] rounded-full transition-all duration-1000"></div>
+</div>
+<p class="mt-md font-body-md text-on-surface-variant italic">750 XP lagi untuk menjadi 'Green Guardian'!</p>
+</section>
+<!-- Mission Section -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-h2 text-on-background">Misi Hari Ini</h3>
+<span class="text-primary font-button flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    +150 XP
+                </span>
+</div>
+<!-- Mission Cards -->
+<div class="grid grid-cols-1 gap-md">
+<!-- Mission 1 -->
+<div class="bg-white border-2 border-secondary-container rounded-[28px] p-md shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] relative overflow-hidden">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[28px]" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<h4 class="font-button text-on-surface">Siram tepat waktu 3x</h4>
+<span class="font-label-caps text-secondary">+50 XP</span>
+</div>
+</div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed rounded-full p-1 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between text-xs font-bold text-on-surface-variant">
+<span>Progres</span>
+<span>2 / 3</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-2/3 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Mission 2 -->
+<div class="bg-white border-2 border-secondary-container rounded-[28px] p-md shadow-[0_4px_20px_0_rgba(136,192,112,0.08)]">
+<div class="flex justify-between items-start mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-2xl bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[28px]" data-icon="thermostat">thermostat</span>
+</div>
+<div>
+<h4 class="font-button text-on-surface">Jaga kelembapan 1 hari</h4>
+<span class="font-label-caps text-primary">+100 XP</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant" data-icon="pending">pending</span>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between text-xs font-bold text-on-surface-variant">
+<span>Stabil: 18 jam</span>
+<span>75%</span>
+</div>
+<div class="w-full h-3 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Badge Section -->
+<section class="space-y-md">
+<h3 class="font-h2 text-on-background">Lencana Koleksi</h3>
+<div class="grid grid-cols-2 gap-md">
+<!-- Badge 1 -->
+<div class="bg-tertiary-container/10 border-2 border-tertiary-container/30 rounded-[32px] p-lg flex flex-col items-center text-center space-y-sm shadow-sm">
+<div class="w-20 h-20 rounded-full bg-tertiary-fixed flex items-center justify-center shadow-lg transform rotate-3">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-[48px]" data-icon="park" style="font-variation-settings: 'FILL' 1;">park</span>
+</div>
+<div>
+<h5 class="font-button text-on-surface leading-tight">Plant Hero</h5>
+<p class="text-[10px] font-bold text-tertiary-container uppercase mt-1 tracking-wider">Level Elite</p>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="bg-secondary-container/10 border-2 border-secondary-container/30 rounded-[32px] p-lg flex flex-col items-center text-center space-y-sm shadow-sm">
+<div class="w-20 h-20 rounded-full bg-secondary-fixed flex items-center justify-center shadow-lg transform -rotate-3">
+<span class="material-symbols-outlined text-on-secondary-fixed text-[48px]" data-icon="opacity" style="font-variation-settings: 'FILL' 1;">opacity</span>
+</div>
+<div>
+<h5 class="font-button text-on-surface leading-tight">Water Master</h5>
+<p class="text-[10px] font-bold text-on-secondary-fixed-variant uppercase mt-1 tracking-wider">Sempurna</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Aesthetic Bento Stat -->
+<section class="grid grid-cols-2 gap-md">
+<div class="bg-primary text-on-primary p-md rounded-[28px] flex flex-col justify-between aspect-square">
+<span class="material-symbols-outlined text-[32px]" data-icon="eco">eco</span>
+<div>
+<div class="text-[28px] font-black">12</div>
+<div class="font-label-caps opacity-80 uppercase leading-none">Tanaman Hidup</div>
+</div>
+</div>
+<div class="bg-white p-md rounded-[28px] border border-outline-variant flex flex-col justify-between aspect-square shadow-sm">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="history">history</span>
+<div>
+<div class="text-[28px] font-black text-on-surface">340</div>
+<div class="font-label-caps text-on-surface-variant uppercase leading-none">Hari Merawat</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-zinc-900 rounded-t-[32px] shadow-[0_-8px_24px_0_rgba(136,192,112,0.12)]">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Riwayat</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-2xl px-4 py-2 transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="task" style="font-variation-settings: 'FILL' 1;">task</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Misi</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Notif</span>
+</a>
+</nav>
+</body></html>

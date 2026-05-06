@@ -1,0 +1,23 @@
+{
+  "moisture": 42,
+  "status": "idle",
+  "online": true,
+  "last_update": 1714620000000,
+  "control": {
+    "siram": false
+  },
+  "game": {
+    "score": 120,
+    "level": 3
+  },
+  "history": {
+    "sample_1": {
+      "action": "seed_data",
+      "title": "Seed Device",
+      "device_id": "device_001",
+      "triggered_by": "system_seed",
+      "moisture_before": 35,
+      "created_at": 1714616400000
+    }
+  }
+}

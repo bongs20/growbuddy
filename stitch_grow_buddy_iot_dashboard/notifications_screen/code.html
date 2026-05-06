@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffe088",
+                        "tertiary": "#735c00",
+                        "surface-variant": "#e8e3cd",
+                        "primary": "#376a25",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-container-highest": "#e8e3cd",
+                        "outline-variant": "#c2c9b9",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-primary": "#9cd683",
+                        "surface-dim": "#e0dac5",
+                        "on-surface": "#1e1c0f",
+                        "on-secondary-fixed-variant": "#0d503f",
+                        "secondary-container": "#aeedd5",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#333122",
+                        "background": "#fff9e7",
+                        "surface-bright": "#fff9e7",
+                        "on-secondary-fixed": "#002118",
+                        "inverse-on-surface": "#f7f1db",
+                        "tertiary-fixed-dim": "#e7c353",
+                        "surface-container-high": "#eee8d3",
+                        "on-primary-fixed": "#042100",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#376a25",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#9cd683",
+                        "surface-container-low": "#faf4de",
+                        "primary-fixed": "#b8f29d",
+                        "outline": "#72796c",
+                        "secondary-fixed-dim": "#96d3bd",
+                        "on-surface-variant": "#42493d",
+                        "on-primary-container": "#1c4e0b",
+                        "surface-container": "#f4eed8",
+                        "secondary-fixed": "#b1efd8",
+                        "on-tertiary-container": "#544200",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#2c6956",
+                        "surface": "#fff9e7",
+                        "primary-container": "#88c070",
+                        "on-primary-fixed-variant": "#1f510e",
+                        "tertiary-container": "#d1ae40",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#316d5b",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1e1c0f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "container-padding": "20px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "button": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "button": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff9e7;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 z-50 w-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden border-2 border-white">
+<img class="w-full h-full object-cover" data-alt="A professional high-resolution profile portrait of a smiling young plant enthusiast, set against a soft bokeh background of lush green indoor plants. The lighting is bright and warm, reflecting a healthy lifestyle and modern aesthetic. The individual wears clean, casual attire that fits the nurturing and approachable brand identity of a plant care specialist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3o0VckHPNSTV4jsODPA5WGESPqjUtbuUw6RH9-pa07gFjdzTfhY3Ftc6isxlGv-DZCY7kcY-xLW3lbIm-zvD0avDeG6ka_3l9ns0cGCa_9Uhdnl8jHhl0KN70tro8SLASagfx2WZRZpSpi4o9Wszxcxpd2DNMo8VvPJVGci4ST0XMgyEKIMrhQ41nLT5mksTBKHwltS5ZOS5LOxVBu_Tssm6M-G7bN3x8MYl1LtsO2aFleDp1Oq3TH8XXt6TnbFdPAVImP7-ujS0"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold px-1.5 py-0.5 rounded-full border border-white">
+                    LV 12
+                </div>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-lg text-emerald-600">Halo, Plant Hero!</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-surface-container-low text-emerald-500 hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+</button>
+</header>
+<main class="mt-24 px-container-padding">
+<!-- Title & Filter Section -->
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-h2 text-h2 text-on-background">Notifikasi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Kabar terbaru dari tanamanmu</p>
+</div>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-button text-xs shadow-sm hover:opacity-90 active:scale-95 transition-all">
+                Tandai Dibaca
+            </button>
+</div>
+<!-- Notification List -->
+<div class="space-y-md">
+<!-- Warning Yellow: Tanaman haus -->
+<div class="glass-card p-md rounded-[24px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] border-l-8 border-tertiary-container relative overflow-hidden flex gap-4 items-start active:scale-[0.98] transition-transform">
+<div class="absolute top-0 right-0 w-24 h-24 -mr-8 -mt-8 opacity-10">
+<span class="material-symbols-outlined text-[80px]" data-icon="water_drop">water_drop</span>
+</div>
+<div class="w-12 h-12 rounded-2xl bg-tertiary-fixed flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="opacity">opacity</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-button text-on-surface">Tanaman haus</h3>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">Baru saja</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-snug">Moisture level Monstera Deliciosa turun di bawah 30%. Segera beri minum!</p>
+<div class="mt-4 flex gap-2">
+<button class="bg-primary px-4 py-2 rounded-xl text-white font-button text-sm shadow-md active:inner-shadow transition-all">
+                            Siram Sekarang
+                        </button>
+<button class="border border-outline-variant px-4 py-2 rounded-xl font-button text-sm text-on-surface-variant">
+                            Nanti
+                        </button>
+</div>
+</div>
+</div>
+<!-- Success Green: Penyiraman berhasil -->
+<div class="glass-card p-md rounded-[24px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] border-l-8 border-primary-container relative overflow-hidden flex gap-4 items-start">
+<div class="w-12 h-12 rounded-2xl bg-secondary-fixed flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-button text-on-surface">Penyiraman berhasil</h3>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">15m lalu</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-snug">Sistem otomatis baru saja menyelesaikan penyiraman pada Kaktus Mini. Status: Segar!</p>
+</div>
+</div>
+<!-- Warning Red: Tanah terlalu basah -->
+<div class="glass-card p-md rounded-[24px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] border-l-8 border-error relative overflow-hidden flex gap-4 items-start">
+<div class="w-12 h-12 rounded-2xl bg-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error font-bold" data-icon="warning">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-button text-on-surface">Tanah terlalu basah</h3>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">1j lalu</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-snug">Sensor mendeteksi genangan air di pot Lidah Buaya. Pastikan drainase tidak tersumbat.</p>
+</div>
+</div>
+<!-- Error Red: Koneksi terputus -->
+<div class="glass-card p-md rounded-[24px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] border-l-8 border-on-error-container relative overflow-hidden flex gap-4 items-start">
+<div class="w-12 h-12 rounded-2xl bg-zinc-200 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-zinc-600" data-icon="wifi_off">wifi_off</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-button text-on-surface">Koneksi terputus</h3>
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">3j lalu</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-snug">Hub IoT di ruang tamu kehilangan koneksi internet. Data sensor tidak dapat diperbarui.</p>
+<button class="mt-3 text-primary font-button text-sm flex items-center gap-1">
+                        Hubungkan Kembali
+                        <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Older Notifications Separator -->
+<div class="py-4 flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+<span class="font-label-caps text-label-caps text-outline uppercase">Kemarin</span>
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+</div>
+<!-- Mission Card Example -->
+<div class="bg-[#fdfcf5] border border-secondary-fixed p-md rounded-[24px] shadow-sm flex gap-4 items-center">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="flex-1">
+<h3 class="font-button text-on-surface">Misi Selesai!</h3>
+<p class="font-body-md text-xs text-on-surface-variant leading-tight">Kamu baru saja mendapatkan lencana "Penyiram Teladan".</p>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[32px]" data-icon="workspace_premium">workspace_premium</span>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-zinc-900 rounded-t-[32px] border-t border-emerald-50 dark:border-zinc-800 shadow-[0_-8px_24px_0_rgba(136,192,112,0.12)]">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Riwayat</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Misi</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-2xl px-4 py-2 transition-all duration-300 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Notif</span>
+</a>
+</nav>
+</body></html>

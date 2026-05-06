@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Penyiraman Berlangsung</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffe088",
+                        "tertiary": "#735c00",
+                        "surface-variant": "#e8e3cd",
+                        "primary": "#376a25",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-container-highest": "#e8e3cd",
+                        "outline-variant": "#c2c9b9",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-primary": "#9cd683",
+                        "surface-dim": "#e0dac5",
+                        "on-surface": "#1e1c0f",
+                        "on-secondary-fixed-variant": "#0d503f",
+                        "secondary-container": "#aeedd5",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#333122",
+                        "background": "#fff9e7",
+                        "surface-bright": "#fff9e7",
+                        "on-secondary-fixed": "#002118",
+                        "inverse-on-surface": "#f7f1db",
+                        "tertiary-fixed-dim": "#e7c353",
+                        "surface-container-high": "#eee8d3",
+                        "on-primary-fixed": "#042100",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#376a25",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#9cd683",
+                        "surface-container-low": "#faf4de",
+                        "primary-fixed": "#b8f29d",
+                        "outline": "#72796c",
+                        "secondary-fixed-dim": "#96d3bd",
+                        "on-surface-variant": "#42493d",
+                        "on-primary-container": "#1c4e0b",
+                        "surface-container": "#f4eed8",
+                        "secondary-fixed": "#b1efd8",
+                        "on-tertiary-container": "#544200",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#2c6956",
+                        "surface": "#fff9e7",
+                        "primary-container": "#88c070",
+                        "on-primary-fixed-variant": "#1f510e",
+                        "tertiary-container": "#d1ae40",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#316d5b",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1e1c0f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "container-padding": "20px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "button": ["Plus Jakarta Sans"],
+                        "h2": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-caps": ["Plus Jakarta Sans"],
+                        "h1": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "button": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .water-wave {
+            background: linear-gradient(180deg, #b1efd8 0%, #2c6956 100%);
+            border-radius: 45%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col items-center justify-center p-container-padding overflow-hidden">
+<!-- Status Header (TopAppBar Reference) -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-white/80 backdrop-blur-md z-50">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A professional high-quality portrait of a smiling user with a minimalist level badge on their shoulder. The photo is set against a clean, soft-lit studio background with warm yellow and emerald green accents, matching a friendly plant-care app aesthetic. The lighting is soft and airy, creating a modern and approachable feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcsl2JTSgI94foFyPoSrWZh_Wf47yIvMe_crTz3bw0GKiwKqMj0D7z8Iqd7EcaNf_Zrl51DpxCQxuJ4b8sAlm1yYnbiiUhdhp-PTFrxsOkPgNsWn9eEGGOjSgnqwwp1FFvz0kA_W536j4cu7f6x3FXwxMtKXnnXWrOFtJVJZ6wdGODSlMb1E8uJYWQ2YcUCE7FVSa-7iRipZRm0Zp67YvZzRRQhs10RNkbo5fJLcg1gQXniHRV5YUjM2CvXDFtUgzqf1zg1cggAPE"/>
+</div>
+<span class="font-h2 text-lg text-emerald-600 font-bold">Halo, Plant Hero!</span>
+</div>
+<div class="text-emerald-500">
+<span class="material-symbols-outlined text-2xl" data-icon="sensors">sensors</span>
+</div>
+</header>
+<!-- Main Content Canvas (Nurturing Interaction) -->
+<main class="w-full max-w-md flex flex-col items-center gap-xl relative">
+<!-- Animated Plant Character & Loading State -->
+<div class="relative w-72 h-72 flex items-center justify-center">
+<!-- Background Halo (Ambient Shadows) -->
+<div class="absolute inset-0 bg-primary-container/20 rounded-full blur-[40px]"></div>
+<!-- Character Image Container -->
+<div class="relative z-10 w-64 h-64 bg-white rounded-full shadow-[0_4px_20px_0_rgba(136,192,112,0.15)] flex items-center justify-center overflow-hidden border-4 border-surface-container-low">
+<img alt="Happy Plant" class="w-48 h-48 object-contain" data-alt="A cute, anthropomorphic 3D rendered succulent plant with small expressive eyes and a happy smile. The plant sits in a clean white ceramic pot and is being sprinkled with gentle, sparkling water droplets. The background is a soft, pastel emerald and cream gradient, creating a nurturing and joyful game-like atmosphere with high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYEE3ulkTjwzIitTuSANU9HWo3YHRtEkGhbtii1VXJf_PGXNQmb_FoT5rAxZYCqiNqzQKb-y5ofCg42vSQR05Dvy0uf0u6da0JvtMz80X1HfFqVMSVEmQHTp1DcwqklDfntNJzJTxoMvNQp8jCvVu6a0lhCfxn5d6BCpnW_X5mHj2knU12OmNObuZcdhaWqTgjtn-5sTbFiD7c4MzZLGUlmGkk4wYH7nR7teKjSSNEzkBG9SudRPKrBrfkaPFiqdiibddxH8ccub4"/>
+<!-- Water Progress Overlay -->
+<div class="absolute bottom-0 left-0 w-full bg-secondary-container/40 flex flex-col items-center" style="height: 45%;">
+<div class="w-full h-4 water-wave -mt-2"></div>
+</div>
+</div>
+</div>
+<!-- Progress Text Cluster -->
+<div class="text-center flex flex-col gap-sm">
+<h1 class="font-h1 text-primary text-3xl">Sedang menyiram...</h1>
+<div class="flex items-center justify-center gap-xs px-4 py-2 bg-secondary-container rounded-full text-on-secondary-container">
+<span class="material-symbols-outlined text-lg" data-icon="water_drop" style='font-variation-settings: "FILL" 1;'>water_drop</span>
+<span class="font-button text-sm">Pompa aktif 3 detik</span>
+</div>
+</div>
+<!-- IoT Data Cards (Bento Style) -->
+<div class="grid gap-md w-full mt-lg grid-cols-1">
+<!-- Moisture Status -->
+<div class="bg-white p-md rounded-[32px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] border border-emerald-50 flex flex-col gap-xs">
+<span class="text-label-caps text-outline uppercase">Kelembapan</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-h1 text-primary">68</span>
+<span class="text-secondary font-bold">%</span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden mt-xs">
+<div class="bg-primary-container h-full w-[68%] rounded-full shadow-[0_0_8px_rgba(136,192,112,0.4)]"></div>
+</div>
+</div>
+<!-- Pump Temperature -->
+</div>
+<!-- Mission Hint (Tactile Card) -->
+<div class="w-full bg-white p-lg rounded-[32px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] border border-sky-100 flex items-center gap-md">
+<div class="w-12 h-12 bg-secondary-fixed rounded-2xl flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+</div>
+<div>
+<p class="text-label-caps text-outline">Misi Hari Ini</p>
+<p class="font-body-md font-bold text-on-surface">Siram lidah buaya pagi ini</p>
+</div>
+<div class="ml-auto w-8 h-8 bg-tertiary-fixed rounded-full flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-lg text-on-tertiary-fixed" data-icon="celebration">celebration</span>
+</div>
+</div>
+</main>
+<!-- Contextual "Batalkan" Action (Squishy Button) -->
+<div class="mt-xl">
+<button class="px-8 py-4 bg-error-container text-on-error-container font-button rounded-full active:scale-90 transition-all shadow-[0_4px_12px_rgba(147,0,10,0.12)] border border-error/10">
+            Hentikan Pompa
+        </button>
+</div>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white shadow-[0_-8px_24px_0_rgba(136,192,112,0.12)] rounded-t-[32px]">
+<div class="flex flex-col items-center justify-center bg-emerald-100 text-emerald-700 rounded-2xl px-4 py-2 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="home" style='font-variation-settings: "FILL" 1;'>home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Beranda</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 px-4 py-2 hover:bg-emerald-50 transition-colors rounded-2xl">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Riwayat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 px-4 py-2 hover:bg-emerald-50 transition-colors rounded-2xl">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Misi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 px-4 py-2 hover:bg-emerald-50 transition-colors rounded-2xl">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Notif</span>
+</div>
+</nav>
+<!-- Overlay Confetti Visual Hint (Game Aesthetic) -->
+<div class="fixed top-20 right-10 pointer-events-none opacity-40">
+<span class="material-symbols-outlined text-4xl text-tertiary-fixed" data-icon="sparkles" style='font-variation-settings: "FILL" 1;'>colors_spark</span>
+</div>
+<div class="fixed bottom-40 left-10 pointer-events-none opacity-40">
+<span class="material-symbols-outlined text-4xl text-secondary-fixed" data-icon="bubble_chart" style='font-variation-settings: "FILL" 1;'>bubble_chart</span>
+</div>
+</body></html>

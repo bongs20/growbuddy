@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1064950733261",
+    "firebase_url": "https://grow-buddy-34262-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "grow-buddy-34262",
+    "storage_bucket": "grow-buddy-34262.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064950733261:android:512d9e9770fcb3c7ea4c84",
+        "android_client_info": {
+          "package_name": "com.example.growbuddy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCmSZ64Fl-ni8QC-D1JOIYlykUNVp5XvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffe088",
+                    "tertiary": "#735c00",
+                    "surface-variant": "#e8e3cd",
+                    "primary": "#376a25",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-container-highest": "#e8e3cd",
+                    "outline-variant": "#c2c9b9",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "inverse-primary": "#9cd683",
+                    "surface-dim": "#e0dac5",
+                    "on-surface": "#1e1c0f",
+                    "on-secondary-fixed-variant": "#0d503f",
+                    "secondary-container": "#aeedd5",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#333122",
+                    "background": "#fff9e7",
+                    "surface-bright": "#fff9e7",
+                    "on-secondary-fixed": "#002118",
+                    "inverse-on-surface": "#f7f1db",
+                    "tertiary-fixed-dim": "#e7c353",
+                    "surface-container-high": "#eee8d3",
+                    "on-primary-fixed": "#042100",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#376a25",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#9cd683",
+                    "surface-container-low": "#faf4de",
+                    "primary-fixed": "#b8f29d",
+                    "outline": "#72796c",
+                    "secondary-fixed-dim": "#96d3bd",
+                    "on-surface-variant": "#42493d",
+                    "on-primary-container": "#1c4e0b",
+                    "surface-container": "#f4eed8",
+                    "secondary-fixed": "#b1efd8",
+                    "on-tertiary-container": "#544200",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#2c6956",
+                    "surface": "#fff9e7",
+                    "primary-container": "#88c070",
+                    "on-primary-fixed-variant": "#1f510e",
+                    "tertiary-container": "#d1ae40",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#316d5b",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1e1c0f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "container-padding": "20px",
+                    "xl": "32px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "button": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "button": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #fff9e7;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface antialiased pb-32">
+<!-- TopAppBar Shell -->
+<header class="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full docked full-width top-0 z-50 shadow-[0_4px_20px_0_rgba(136,192,112,0.08)]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border-2 border-white shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A friendly male avatar portrait with a clean, modern aesthetic, set against a soft blurred greenhouse background. The lighting is bright and warm, reflecting a professional yet approachable plant caretaker persona. The colors are dominated by soft greens and warm earthy tones to match the nurturing brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8Bjcirc660I7fJ5NES5zQ46TB2jNo9es1IdNt6AUV2RtoY6UyQClJUxK_9QueDVZVUIAdMlMJI0uAprPq4_hFg7jjzZCX_DUTnvU1t8WW_NE-YHNq0DcpbHt1xP5ixyajgfTc0FGMjt4lrBAyWj3qwjofP-qAiWLUXZT7L1K5LVgrQmtnbDjGPWuCYDHa87QT2ps5rrcSruKuRDDYDRI-ayDxoRJrWnsoqz7jladcwJv3wBhfMYtHnQvXnuWV8gtE847gJz2MiHA"/>
+</div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-lg text-emerald-600 dark:text-emerald-300 tracking-tight">Halo, Plant Hero!</h1>
+</div>
+<button class="material-symbols-outlined text-emerald-500 dark:text-emerald-400 hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200" data-icon="sensors">sensors</button>
+</header>
+<!-- Content Canvas -->
+<main class="max-w-md mx-auto px-container-padding pt-lg">
+<!-- Screen Title Section -->
+<section class="mb-lg">
+<h2 class="font-h2 text-h2 text-on-surface mb-xs">Riwayat Penyiraman</h2>
+<p class="font-body-md text-on-surface-variant opacity-80">Pantau rutinitas nutrisi tanamanmu</p>
+</section>
+<!-- Filters Section -->
+<section class="flex gap-sm mb-xl overflow-x-auto pb-2 no-scrollbar">
+<button class="whitespace-nowrap px-lg py-2 bg-primary-container text-on-primary-container rounded-full font-button text-button shadow-[0_4px_12px_0_rgba(136,192,112,0.2)]">Semua</button>
+<button class="whitespace-nowrap px-lg py-2 bg-surface-container-low text-on-surface-variant rounded-full font-button text-button hover:bg-surface-container transition-colors">Hari ini</button>
+<button class="whitespace-nowrap px-lg py-2 bg-surface-container-low text-on-surface-variant rounded-full font-button text-button hover:bg-surface-container transition-colors">Tepat waktu</button>
+</section>
+<!-- History Bento List -->
+<div class="flex flex-col gap-lg">
+<!-- History Card 1 -->
+<div class="bg-surface-container-lowest p-md rounded-[24px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] flex items-start gap-md border border-white/50">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<div>
+<p class="font-label-caps text-label-caps text-primary uppercase tracking-wider mb-xs">14:30 WIB</p>
+<h3 class="font-body-lg text-body-lg text-on-surface">Siraman Sore</h3>
+</div>
+<div class="bg-tertiary-fixed px-3 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-button text-[14px] text-on-tertiary-fixed">+10</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm mt-md">
+<div class="bg-surface-container rounded-xl p-sm">
+<p class="text-[10px] font-bold text-on-surface-variant/60 uppercase">Sebelum</p>
+<p class="text-h2 font-h2 text-on-surface">22<span class="text-body-md opacity-50">%</span></p>
+</div>
+<div class="bg-primary-container/20 rounded-xl p-sm border border-primary/10">
+<p class="text-[10px] font-bold text-primary uppercase">Sesudah</p>
+<p class="text-h2 font-h2 text-primary">65<span class="text-body-md opacity-50">%</span></p>
+</div>
+</div>
+<div class="mt-md flex items-center gap-2">
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%] rounded-full"></div>
+</div>
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-bold px-2 py-1 rounded-md uppercase tracking-tighter">Tepat waktu</span>
+</div>
+</div>
+</div>
+<!-- History Card 2 -->
+<div class="bg-surface-container-lowest p-md rounded-[24px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] flex items-start gap-md border border-white/50">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="opacity" style="font-variation-settings: 'FILL' 1;">opacity</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<div>
+<p class="font-label-caps text-label-caps text-primary uppercase tracking-wider mb-xs">08:15 WIB</p>
+<h3 class="font-body-lg text-body-lg text-on-surface">Siraman Pagi</h3>
+</div>
+<div class="bg-tertiary-fixed px-3 py-1 rounded-lg flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-button text-[14px] text-on-tertiary-fixed">+10</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm mt-md">
+<div class="bg-surface-container rounded-xl p-sm">
+<p class="text-[10px] font-bold text-on-surface-variant/60 uppercase">Sebelum</p>
+<p class="text-h2 font-h2 text-on-surface">18<span class="text-body-md opacity-50">%</span></p>
+</div>
+<div class="bg-primary-container/20 rounded-xl p-sm border border-primary/10">
+<p class="text-[10px] font-bold text-primary uppercase">Sesudah</p>
+<p class="text-h2 font-h2 text-primary">72<span class="text-body-md opacity-50">%</span></p>
+</div>
+</div>
+<div class="mt-md flex items-center gap-2">
+<div class="flex-1 h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[72%] rounded-full"></div>
+</div>
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-bold px-2 py-1 rounded-md uppercase tracking-tighter">Tepat waktu</span>
+</div>
+</div>
+</div>
+<!-- Yesterday Divider -->
+<div class="flex items-center gap-md py-base">
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+<span class="font-label-caps text-on-surface-variant/50">Kemarin, 23 Okt</span>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+<!-- History Card 3 (Minimal Style) -->
+<div class="bg-surface-container-lowest p-md rounded-[24px] shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] flex items-start gap-md border border-white/50 opacity-90">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="schedule" style="font-variation-settings: 'FILL' 1;">schedule</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-label-caps text-label-caps text-primary uppercase tracking-wider mb-xs">07:45 WIB</p>
+<h3 class="font-body-lg text-body-lg text-on-surface">Siraman Rutin</h3>
+</div>
+<div class="bg-tertiary-fixed px-3 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-button text-[14px] text-on-tertiary-fixed">+10</span>
+</div>
+</div>
+<div class="mt-sm flex items-center gap-2">
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-bold px-2 py-1 rounded-md uppercase tracking-tighter">Tepat waktu</span>
+<p class="text-sm text-on-surface-variant italic">Meningkatkan kelembapan +40%</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-zinc-900 rounded-t-[32px] shadow-[0_-8px_24px_0_rgba(136,192,112,0.12)]">
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 transition-all active:scale-90 cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Beranda</span>
+</div>
+<!-- Active Tab: Riwayat -->
+<div class="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-2xl px-4 py-2 transition-all duration-300 active:scale-90 cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Riwayat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 transition-all active:scale-90 cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Misi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 dark:hover:bg-zinc-800 transition-all active:scale-90 cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold mt-1">Notif</span>
+</div>
+</nav>
+<!-- Contextual FAB (Suppressed based on screen: History) -->
+</body></html>

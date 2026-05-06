@@ -1,0 +1,32 @@
+{
+  "users": {
+    "replace_with_anonymous_uid": {
+      "device_id": "device_001"
+    }
+  },
+  "devices": {
+    "device_001": {
+      "moisture": 42,
+      "status": "idle",
+      "online": true,
+      "last_update": 1714620000000,
+      "control": {
+        "siram": false
+      },
+      "game": {
+        "score": 120,
+        "level": 3
+      },
+      "history": {
+        "sample_1": {
+          "action": "manual_water",
+          "title": "Siram Sekarang",
+          "device_id": "device_001",
+          "triggered_by": "replace_with_anonymous_uid",
+          "moisture_before": 35,
+          "created_at": 1714616400000
+        }
+      }
+    }
+  }
+}

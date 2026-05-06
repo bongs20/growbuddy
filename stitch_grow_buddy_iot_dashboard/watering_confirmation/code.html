@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffe088",
+                    "tertiary": "#735c00",
+                    "surface-variant": "#e8e3cd",
+                    "primary": "#376a25",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-container-highest": "#e8e3cd",
+                    "outline-variant": "#c2c9b9",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "inverse-primary": "#9cd683",
+                    "surface-dim": "#e0dac5",
+                    "on-surface": "#1e1c0f",
+                    "on-secondary-fixed-variant": "#0d503f",
+                    "secondary-container": "#aeedd5",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#333122",
+                    "background": "#fff9e7",
+                    "surface-bright": "#fff9e7",
+                    "on-secondary-fixed": "#002118",
+                    "inverse-on-surface": "#f7f1db",
+                    "tertiary-fixed-dim": "#e7c353",
+                    "surface-container-high": "#eee8d3",
+                    "on-primary-fixed": "#042100",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-tint": "#376a25",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#9cd683",
+                    "surface-container-low": "#faf4de",
+                    "primary-fixed": "#b8f29d",
+                    "outline": "#72796c",
+                    "secondary-fixed-dim": "#96d3bd",
+                    "on-surface-variant": "#42493d",
+                    "on-primary-container": "#1c4e0b",
+                    "surface-container": "#f4eed8",
+                    "secondary-fixed": "#b1efd8",
+                    "on-tertiary-container": "#544200",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#2c6956",
+                    "surface": "#fff9e7",
+                    "primary-container": "#88c070",
+                    "on-primary-fixed-variant": "#1f510e",
+                    "tertiary-container": "#d1ae40",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#316d5b",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1e1c0f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "container-padding": "20px",
+                    "xl": "32px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "button": ["Plus Jakarta Sans"],
+                    "h2": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "h1": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "button": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .modal-blur {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative">
+<header class="bg-white/80 backdrop-blur-md text-emerald-500 font-['Plus_Jakarta_Sans'] font-bold text-lg shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] flex justify-between items-center px-6 py-4 w-full fixed top-0 z-40">
+<div class="flex items-center gap-3">
+<div class="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a cheerful young man with a warm smile, set against a soft, sunlit indoor garden background. The lighting is high-key and natural, creating a friendly and encouraging atmosphere consistent with a nurturing plant-care application. The color palette features soft greens and warm yellows to align with the brand's organic and tactile visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOSUdFnE_z8qA0kZwo3EpXCc_TmTjQP9A-6kVxHxZoCnlGyVEpuD7rvvRgiYVJxLW6hSDm-Pb74s4xmHJ4kGRJv11xZF54Mabb5L9G1tAdfh6hCRKTqfB_G2RyuZXdEur4WS8J5Zk0ArQXvZR68NqjFhj7-dDgGf_aQkASKkoi0PKtcwQFt8pVyziMkUWICo3SgYtcDl_dQELAha4R53B6vNVmOr2zt3SzyM7iWTZ_v580P11mKB7T4dvlsvWsLgcCKuReGca3qlM"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary-fixed rounded-full border-2 border-white"></div>
+</div>
+<span class="text-emerald-600 font-black tracking-tight">Halo, Plant Hero!</span>
+</div>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="sensors">sensors</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-container-padding space-y-lg">
+<section class="grid grid-cols-2 gap-md">
+<div class="col-span-2 bg-surface-container-lowest rounded-[32px] p-lg shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] relative overflow-hidden">
+<div class="relative z-10">
+<h1 class="font-h1 text-h1 text-primary mb-xs">Kaktus Mini</h1>
+<p class="font-body-md text-on-surface-variant italic">"Wah, segar sekali!"</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="potted_plant">potted_plant</span>
+</div>
+</div>
+<div class="bg-white rounded-[24px] p-md shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] flex flex-col items-center justify-center text-center space-y-base border border-secondary-container/20">
+<span class="material-symbols-outlined text-secondary text-[32px]" data-icon="water_drop">water_drop</span>
+<div>
+<p class="font-label-caps text-label-caps text-outline uppercase">Kelembapan</p>
+<p class="font-h2 text-h2 text-secondary">42%</p>
+</div>
+</div>
+<div class="bg-white rounded-[24px] p-md shadow-[0_4px_20px_0_rgba(136,192,112,0.08)] flex flex-col items-center justify-center text-center space-y-base border border-tertiary-container/20">
+<span class="material-symbols-outlined text-tertiary text-[32px]" data-icon="wb_sunny">wb_sunny</span>
+<div>
+<p class="font-label-caps text-label-caps text-outline uppercase">Cahaya</p>
+<p class="font-h2 text-h2 text-tertiary">850 lux</p>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-low rounded-[32px] p-lg border border-primary-container/30">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-h2 text-h2 text-on-surface">Misi Hari Ini</h2>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-caps text-[10px]">2 MISI LAGI</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center gap-md bg-white p-md rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+<span class="font-body-md text-on-surface">Siram kaktus pagi ini</span>
+</div>
+<div class="flex items-center gap-md bg-white/50 p-md rounded-xl border border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-outline" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+<span class="font-body-md text-on-surface-variant">Beri pupuk organik</span>
+</div>
+</div>
+</section>
+</main>
+<div class="fixed inset-0 z-50 flex items-center justify-center p-6">
+<div class="absolute inset-0 bg-on-surface/40 modal-blur"></div>
+<div class="relative bg-white dark:bg-zinc-900 w-full max-w-sm rounded-[40px] p-xl shadow-[0_20px_50px_rgba(55,106,37,0.2)] overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-5">
+<span class="material-symbols-outlined text-[120px]" data-icon="opacity">opacity</span>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center mb-lg shadow-[0_8px_24px_rgba(136,192,112,0.4)]">
+<span class="material-symbols-outlined text-on-primary-container text-[40px]" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Siram tanaman?</h2>
+<p class="font-body-md text-on-surface-variant mb-xl max-w-[240px]">
+                    Pompa akan menyala selama <span class="font-bold text-primary">3 detik</span> untuk memberikan hidrasi optimal.
+                </p>
+<div class="w-full space-y-md">
+<button class="w-full bg-primary-container text-on-primary-container py-md px-lg rounded-full font-button text-button shadow-[0_4px_12px_rgba(136,192,112,0.3)] active:scale-95 transition-transform duration-200">
+                        Ya, Siram
+                    </button>
+<button class="w-full bg-surface-container-high text-on-surface-variant py-md px-lg rounded-full font-button text-button active:scale-95 transition-transform duration-200">
+                        Batal
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white dark:bg-zinc-900 rounded-t-[32px] shadow-[0_-8px_24px_0_rgba(136,192,112,0.12)] flex justify-around items-center px-4 pb-6 pt-3">
+<div class="flex flex-col items-center justify-center bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 rounded-2xl px-4 py-2 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Beranda</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 transition-all">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Riwayat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 transition-all">
+<span class="material-symbols-outlined" data-icon="task">task</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Misi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-4 py-2 hover:bg-emerald-50 transition-all relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-['Plus_Jakarta_Sans'] text-[12px] font-semibold">Notif</span>
+<div class="absolute top-2 right-4 w-2 h-2 bg-error rounded-full"></div>
+</div>
+</nav>
+</body></html>

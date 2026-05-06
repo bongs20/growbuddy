@@ -1,0 +1,247 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        "device_id": {
+          ".validate": "newData.isString()"
+        },
+        "profile": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid",
+          "display_name": {
+            ".validate": "newData.isString()"
+          },
+          "plant_focus": {
+            ".validate": "newData.isString()"
+          },
+          "location": {
+            ".validate": "newData.isString()"
+          },
+          "updated_at": {
+            ".validate": "newData.isNumber()"
+          }
+        },
+        "settings": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid",
+          "smart_notifications": {
+            ".validate": "newData.isBoolean()"
+          },
+          "auto_water": {
+            ".validate": "newData.isBoolean()"
+          }
+        },
+        "updated_at": {
+          ".validate": "newData.isNumber()"
+        }
+      }
+    },
+    "devices": {
+      "$device_id": {
+        ".read": "auth != null",
+        ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+        "moisture": {
+          ".read": true,
+          ".write": true,
+          ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100"
+        },
+        "status": {
+          ".read": true,
+          ".write": true,
+          ".validate": "newData.isString()"
+        },
+        "online": {
+          ".read": true,
+          ".write": true,
+          ".validate": "newData.isBoolean()"
+        },
+        "last_update": {
+          ".read": true,
+          ".write": true,
+          ".validate": "newData.isNumber()"
+        },
+        "fw_version": {
+          ".read": true,
+          ".write": true,
+          ".validate": "newData.isString()"
+        },
+        "wifi_ssid": {
+          ".read": true,
+          ".write": true,
+          ".validate": "newData.isString()"
+        },
+        "calibration": {
+          ".read": true,
+          ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+          "plant_type": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isString()"
+          },
+          "offset_percent": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber() && newData.val() >= -100 && newData.val() <= 100"
+          },
+          "last_updated": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          }
+        },
+        "control": {
+          ".read": true,
+          ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+          "siram": {
+            ".read": true,
+            ".write": "(auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id) || (auth == null && newData.isBoolean() && newData.val() == false)",
+            ".validate": "newData.isBoolean()"
+          },
+          "requested_at": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "requested_by": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isString()"
+          },
+          "duration_seconds": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 60"
+          }
+        },
+        "game": {
+          ".read": "auth != null",
+          ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+          "score": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "level": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "xp_in_level": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "xp_to_next_level": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "level_floor_score": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "next_level_score": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "last_score_delta": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "last_score_reason": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isString()"
+          },
+          "last_watered_at": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "last_moisture_before": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "last_moisture_after_estimate": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          },
+          "last_duration_seconds": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber()"
+          }
+        },
+        "settings": {
+          ".read": true,
+          ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+          "pump_duration_seconds": {
+            ".read": true,
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 60"
+          }
+        },
+        "history": {
+          ".read": "auth != null",
+          ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+          "$history_id": {
+            ".read": "auth != null",
+            ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
+            "timestamp": {
+              ".validate": "newData.isNumber()"
+            },
+            "before_moisture": {
+              ".validate": "newData.isNumber()"
+            },
+            "after_moisture": {
+              ".validate": "newData.isNumber()"
+            },
+            "action": {
+              ".validate": "newData.isString()"
+            },
+            "title": {
+              ".validate": "newData.isString()"
+            },
+            "device_id": {
+              ".validate": "newData.isString() && newData.val() === $device_id"
+            },
+            "triggered_by": {
+              ".validate": "newData.isString()"
+            },
+            "moisture_before": {
+              ".validate": "newData.isNumber()"
+            },
+            "moisture_after": {
+              ".validate": "newData.isNumber()"
+            },
+            "duration_seconds": {
+              ".validate": "newData.isNumber()"
+            },
+            "score_delta": {
+              ".validate": "newData.isNumber()"
+            },
+            "score_after": {
+              ".validate": "newData.isNumber()"
+            },
+            "level_after": {
+              ".validate": "newData.isNumber()"
+            },
+            "score_reason": {
+              ".validate": "newData.isString()"
+            },
+            "created_at": {
+              ".validate": "newData.isNumber()"
+            }
+          }
+        }
+      }
+    }
+  }
+}
