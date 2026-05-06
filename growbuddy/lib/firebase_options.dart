@@ -26,69 +26,204 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBzwUzzyXuLAP5Dxhk31wSz00bbT1RS6mY',
-    appId: '1:1064950733261:web:03f446e5fa1ad448ea4c84',
-    messagingSenderId: '1064950733261',
-    projectId: 'grow-buddy-34262',
-    authDomain: 'grow-buddy-34262.firebaseapp.com',
-    databaseURL:
-        'https://grow-buddy-34262-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'grow-buddy-34262.firebasestorage.app',
-    measurementId: 'G-2MNZ23EMXS',
+  static FirebaseOptions get web => FirebaseOptions(
+    apiKey: _required('FIREBASE_WEB_API_KEY'),
+    appId: _required('FIREBASE_WEB_APP_ID'),
+    messagingSenderId: _required('FIREBASE_WEB_MESSAGING_SENDER_ID'),
+    projectId: _required('FIREBASE_WEB_PROJECT_ID'),
+    authDomain: _required('FIREBASE_WEB_AUTH_DOMAIN'),
+    databaseURL: _required('FIREBASE_WEB_DATABASE_URL'),
+    storageBucket: _required('FIREBASE_WEB_STORAGE_BUCKET'),
+    measurementId: _optional('FIREBASE_WEB_MEASUREMENT_ID'),
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBCmSZ64Fl-ni8QC-D1JOIYlykUNVp5XvU',
-    appId: '1:1064950733261:android:512d9e9770fcb3c7ea4c84',
-    messagingSenderId: '1064950733261',
-    projectId: 'grow-buddy-34262',
-    databaseURL:
-        'https://grow-buddy-34262-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'grow-buddy-34262.firebasestorage.app',
+  static FirebaseOptions get android => FirebaseOptions(
+    apiKey: _required('FIREBASE_ANDROID_API_KEY'),
+    appId: _required('FIREBASE_ANDROID_APP_ID'),
+    messagingSenderId: _required('FIREBASE_ANDROID_MESSAGING_SENDER_ID'),
+    projectId: _required('FIREBASE_ANDROID_PROJECT_ID'),
+    databaseURL: _required('FIREBASE_ANDROID_DATABASE_URL'),
+    storageBucket: _required('FIREBASE_ANDROID_STORAGE_BUCKET'),
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCYjGbsLydSHXoOiPo_kGyLTi1RUacChUk',
-    appId: '1:1064950733261:ios:719c09d5f252fe87ea4c84',
-    messagingSenderId: '1064950733261',
-    projectId: 'grow-buddy-34262',
-    databaseURL:
-        'https://grow-buddy-34262-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'grow-buddy-34262.firebasestorage.app',
-    iosBundleId: 'com.example.growbuddy',
+  static FirebaseOptions get ios => FirebaseOptions(
+    apiKey: _required('FIREBASE_IOS_API_KEY'),
+    appId: _required('FIREBASE_IOS_APP_ID'),
+    messagingSenderId: _required('FIREBASE_IOS_MESSAGING_SENDER_ID'),
+    projectId: _required('FIREBASE_IOS_PROJECT_ID'),
+    databaseURL: _required('FIREBASE_IOS_DATABASE_URL'),
+    storageBucket: _required('FIREBASE_IOS_STORAGE_BUCKET'),
+    iosBundleId: _required('FIREBASE_IOS_BUNDLE_ID'),
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCYjGbsLydSHXoOiPo_kGyLTi1RUacChUk',
-    appId: '1:1064950733261:ios:719c09d5f252fe87ea4c84',
-    messagingSenderId: '1064950733261',
-    projectId: 'grow-buddy-34262',
-    databaseURL:
-        'https://grow-buddy-34262-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'grow-buddy-34262.firebasestorage.app',
-    iosBundleId: 'com.example.growbuddy',
+  static FirebaseOptions get macos => FirebaseOptions(
+    apiKey: _required('FIREBASE_MACOS_API_KEY'),
+    appId: _required('FIREBASE_MACOS_APP_ID'),
+    messagingSenderId: _required('FIREBASE_MACOS_MESSAGING_SENDER_ID'),
+    projectId: _required('FIREBASE_MACOS_PROJECT_ID'),
+    databaseURL: _required('FIREBASE_MACOS_DATABASE_URL'),
+    storageBucket: _required('FIREBASE_MACOS_STORAGE_BUCKET'),
+    iosBundleId: _required('FIREBASE_MACOS_BUNDLE_ID'),
   );
 
-  static const FirebaseOptions linux = FirebaseOptions(
-    apiKey: 'AIzaSyDemo1234567890ABCDEFGHIJKLMNOPQR',
-    appId: '1:123456789000:linux:abcdef1234567890',
-    messagingSenderId: '123456789000',
-    projectId: 'growbuddy-demo',
-    databaseURL:
-        'https://growbuddy-demo-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'growbuddy-demo.appspot.com',
+  static FirebaseOptions get linux => FirebaseOptions(
+    apiKey: _required('FIREBASE_LINUX_API_KEY'),
+    appId: _required('FIREBASE_LINUX_APP_ID'),
+    messagingSenderId: _required('FIREBASE_LINUX_MESSAGING_SENDER_ID'),
+    projectId: _required('FIREBASE_LINUX_PROJECT_ID'),
+    databaseURL: _required('FIREBASE_LINUX_DATABASE_URL'),
+    storageBucket: _required('FIREBASE_LINUX_STORAGE_BUCKET'),
   );
 
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyBzwUzzyXuLAP5Dxhk31wSz00bbT1RS6mY',
-    appId: '1:1064950733261:web:e033295fa69321dfea4c84',
-    messagingSenderId: '1064950733261',
-    projectId: 'grow-buddy-34262',
-    authDomain: 'grow-buddy-34262.firebaseapp.com',
-    databaseURL:
-        'https://grow-buddy-34262-default-rtdb.asia-southeast1.firebasedatabase.app',
-    storageBucket: 'grow-buddy-34262.firebasestorage.app',
-    measurementId: 'G-DGG67C4JL7',
+  static FirebaseOptions get windows => FirebaseOptions(
+    apiKey: _required('FIREBASE_WINDOWS_API_KEY'),
+    appId: _required('FIREBASE_WINDOWS_APP_ID'),
+    messagingSenderId: _required('FIREBASE_WINDOWS_MESSAGING_SENDER_ID'),
+    projectId: _required('FIREBASE_WINDOWS_PROJECT_ID'),
+    authDomain: _required('FIREBASE_WINDOWS_AUTH_DOMAIN'),
+    databaseURL: _required('FIREBASE_WINDOWS_DATABASE_URL'),
+    storageBucket: _required('FIREBASE_WINDOWS_STORAGE_BUCKET'),
+    measurementId: _optional('FIREBASE_WINDOWS_MEASUREMENT_ID'),
   );
+
+  static String _required(String key) {
+    const values = {
+      'FIREBASE_WEB_API_KEY': String.fromEnvironment('FIREBASE_WEB_API_KEY'),
+      'FIREBASE_WEB_APP_ID': String.fromEnvironment('FIREBASE_WEB_APP_ID'),
+      'FIREBASE_WEB_MESSAGING_SENDER_ID': String.fromEnvironment(
+        'FIREBASE_WEB_MESSAGING_SENDER_ID',
+      ),
+      'FIREBASE_WEB_PROJECT_ID': String.fromEnvironment(
+        'FIREBASE_WEB_PROJECT_ID',
+      ),
+      'FIREBASE_WEB_AUTH_DOMAIN': String.fromEnvironment(
+        'FIREBASE_WEB_AUTH_DOMAIN',
+      ),
+      'FIREBASE_WEB_DATABASE_URL': String.fromEnvironment(
+        'FIREBASE_WEB_DATABASE_URL',
+      ),
+      'FIREBASE_WEB_STORAGE_BUCKET': String.fromEnvironment(
+        'FIREBASE_WEB_STORAGE_BUCKET',
+      ),
+      'FIREBASE_WEB_MEASUREMENT_ID': String.fromEnvironment(
+        'FIREBASE_WEB_MEASUREMENT_ID',
+      ),
+      'FIREBASE_ANDROID_API_KEY': String.fromEnvironment(
+        'FIREBASE_ANDROID_API_KEY',
+      ),
+      'FIREBASE_ANDROID_APP_ID': String.fromEnvironment(
+        'FIREBASE_ANDROID_APP_ID',
+      ),
+      'FIREBASE_ANDROID_MESSAGING_SENDER_ID': String.fromEnvironment(
+        'FIREBASE_ANDROID_MESSAGING_SENDER_ID',
+      ),
+      'FIREBASE_ANDROID_PROJECT_ID': String.fromEnvironment(
+        'FIREBASE_ANDROID_PROJECT_ID',
+      ),
+      'FIREBASE_ANDROID_DATABASE_URL': String.fromEnvironment(
+        'FIREBASE_ANDROID_DATABASE_URL',
+      ),
+      'FIREBASE_ANDROID_STORAGE_BUCKET': String.fromEnvironment(
+        'FIREBASE_ANDROID_STORAGE_BUCKET',
+      ),
+      'FIREBASE_IOS_API_KEY': String.fromEnvironment('FIREBASE_IOS_API_KEY'),
+      'FIREBASE_IOS_APP_ID': String.fromEnvironment('FIREBASE_IOS_APP_ID'),
+      'FIREBASE_IOS_MESSAGING_SENDER_ID': String.fromEnvironment(
+        'FIREBASE_IOS_MESSAGING_SENDER_ID',
+      ),
+      'FIREBASE_IOS_PROJECT_ID': String.fromEnvironment(
+        'FIREBASE_IOS_PROJECT_ID',
+      ),
+      'FIREBASE_IOS_DATABASE_URL': String.fromEnvironment(
+        'FIREBASE_IOS_DATABASE_URL',
+      ),
+      'FIREBASE_IOS_STORAGE_BUCKET': String.fromEnvironment(
+        'FIREBASE_IOS_STORAGE_BUCKET',
+      ),
+      'FIREBASE_IOS_BUNDLE_ID': String.fromEnvironment(
+        'FIREBASE_IOS_BUNDLE_ID',
+      ),
+      'FIREBASE_MACOS_API_KEY': String.fromEnvironment(
+        'FIREBASE_MACOS_API_KEY',
+      ),
+      'FIREBASE_MACOS_APP_ID': String.fromEnvironment('FIREBASE_MACOS_APP_ID'),
+      'FIREBASE_MACOS_MESSAGING_SENDER_ID': String.fromEnvironment(
+        'FIREBASE_MACOS_MESSAGING_SENDER_ID',
+      ),
+      'FIREBASE_MACOS_PROJECT_ID': String.fromEnvironment(
+        'FIREBASE_MACOS_PROJECT_ID',
+      ),
+      'FIREBASE_MACOS_DATABASE_URL': String.fromEnvironment(
+        'FIREBASE_MACOS_DATABASE_URL',
+      ),
+      'FIREBASE_MACOS_STORAGE_BUCKET': String.fromEnvironment(
+        'FIREBASE_MACOS_STORAGE_BUCKET',
+      ),
+      'FIREBASE_MACOS_BUNDLE_ID': String.fromEnvironment(
+        'FIREBASE_MACOS_BUNDLE_ID',
+      ),
+      'FIREBASE_LINUX_API_KEY': String.fromEnvironment(
+        'FIREBASE_LINUX_API_KEY',
+      ),
+      'FIREBASE_LINUX_APP_ID': String.fromEnvironment('FIREBASE_LINUX_APP_ID'),
+      'FIREBASE_LINUX_MESSAGING_SENDER_ID': String.fromEnvironment(
+        'FIREBASE_LINUX_MESSAGING_SENDER_ID',
+      ),
+      'FIREBASE_LINUX_PROJECT_ID': String.fromEnvironment(
+        'FIREBASE_LINUX_PROJECT_ID',
+      ),
+      'FIREBASE_LINUX_DATABASE_URL': String.fromEnvironment(
+        'FIREBASE_LINUX_DATABASE_URL',
+      ),
+      'FIREBASE_LINUX_STORAGE_BUCKET': String.fromEnvironment(
+        'FIREBASE_LINUX_STORAGE_BUCKET',
+      ),
+      'FIREBASE_WINDOWS_API_KEY': String.fromEnvironment(
+        'FIREBASE_WINDOWS_API_KEY',
+      ),
+      'FIREBASE_WINDOWS_APP_ID': String.fromEnvironment(
+        'FIREBASE_WINDOWS_APP_ID',
+      ),
+      'FIREBASE_WINDOWS_MESSAGING_SENDER_ID': String.fromEnvironment(
+        'FIREBASE_WINDOWS_MESSAGING_SENDER_ID',
+      ),
+      'FIREBASE_WINDOWS_PROJECT_ID': String.fromEnvironment(
+        'FIREBASE_WINDOWS_PROJECT_ID',
+      ),
+      'FIREBASE_WINDOWS_AUTH_DOMAIN': String.fromEnvironment(
+        'FIREBASE_WINDOWS_AUTH_DOMAIN',
+      ),
+      'FIREBASE_WINDOWS_DATABASE_URL': String.fromEnvironment(
+        'FIREBASE_WINDOWS_DATABASE_URL',
+      ),
+      'FIREBASE_WINDOWS_STORAGE_BUCKET': String.fromEnvironment(
+        'FIREBASE_WINDOWS_STORAGE_BUCKET',
+      ),
+      'FIREBASE_WINDOWS_MEASUREMENT_ID': String.fromEnvironment(
+        'FIREBASE_WINDOWS_MEASUREMENT_ID',
+      ),
+    };
+
+    final value = values[key] ?? '';
+    if (value.isEmpty) {
+      throw UnsupportedError(
+        'Missing Firebase configuration: $key. Run Flutter with --dart-define-from-file=.env.',
+      );
+    }
+    return value;
+  }
+
+  static String? _optional(String key) {
+    const values = {
+      'FIREBASE_WEB_MEASUREMENT_ID': String.fromEnvironment(
+        'FIREBASE_WEB_MEASUREMENT_ID',
+      ),
+      'FIREBASE_WINDOWS_MEASUREMENT_ID': String.fromEnvironment(
+        'FIREBASE_WINDOWS_MEASUREMENT_ID',
+      ),
+    };
+
+    final value = values[key] ?? '';
+    return value.isEmpty ? null : value;
+  }
 }
