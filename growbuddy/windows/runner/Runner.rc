@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "growbuddy" "\0"
+            VALUE "FileDescription", "Grow Buddy" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "growbuddy" "\0"
+            VALUE "InternalName", "GrowBuddy" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "growbuddy.exe" "\0"
-            VALUE "ProductName", "growbuddy" "\0"
+            VALUE "OriginalFilename", "GrowBuddy.exe" "\0"
+            VALUE "ProductName", "Grow Buddy" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

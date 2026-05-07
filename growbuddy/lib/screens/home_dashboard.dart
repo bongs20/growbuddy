@@ -186,13 +186,11 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
             ],
           ),
           bottomNavigationBar: widget.bottomNavigationBar,
-          body: RefreshIndicator(
-            onRefresh: () async {
-              await _firebaseService.fetchDevice(widget.deviceId);
-            },
-            child: ListView(
-              padding: const EdgeInsets.all(20),
-              children: [
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              final bool isDesktop = constraints.maxWidth > 900;
+
+              final leftColumn = [
                 _DeviceSummaryCard(
                   deviceId: widget.deviceId,
                   status: status,
@@ -223,6 +221,59 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                   ],
                 ),
                 const SizedBox(height: 16),
+                _SectionCard(
+                  title: 'Kontrol',
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        siramRequested
+                            ? 'Perintah siram masih aktif di device.'
+                            : 'Tekan tombol untuk meminta perangkat menyiram tanaman sesuai durasi pompa yang tersimpan.',
+                        style: const TextStyle(color: Color(0xFF5E6653)),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Durasi pompa saat ini: $durationSeconds detik',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF376A25),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton.icon(
+                        onPressed: _isSubmitting || !currentEffectiveOnline
+                            ? null
+                            : () => _triggerWater(moisture),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF376A25),
+                          foregroundColor: Colors.white,
+                          padding: const EdgeInsets.symmetric(vertical: 18),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18),
+                          ),
+                        ),
+                        icon: _isSubmitting
+                            ? const SizedBox(
+                                width: 18,
+                                height: 18,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : const Icon(Icons.water_drop_rounded),
+                        label: Text(
+                          _isSubmitting ? 'Mengirim...' : 'Siram Sekarang',
+                          style: const TextStyle(fontWeight: FontWeight.w700),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ];
+
+              final rightColumn = [
                 _SectionCard(
                   title: 'Ringkasan Perawatan',
                   child: Column(
@@ -285,63 +336,44 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                _SectionCard(
-                  title: 'Kontrol',
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Text(
-                        siramRequested
-                            ? 'Perintah siram masih aktif di device.'
-                            : 'Tekan tombol untuk meminta perangkat menyiram tanaman sesuai durasi pompa yang tersimpan.',
-                        style: const TextStyle(color: Color(0xFF5E6653)),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Durasi pompa saat ini: $durationSeconds detik',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF376A25),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      ElevatedButton.icon(
-                        onPressed: _isSubmitting || !currentEffectiveOnline
-                            ? null
-                            : () => _triggerWater(moisture),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF376A25),
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 18),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
-                          ),
-                        ),
-                        icon: _isSubmitting
-                            ? const SizedBox(
-                                width: 18,
-                                height: 18,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  color: Colors.white,
-                                ),
-                              )
-                            : const Icon(Icons.water_drop_rounded),
-                        label: Text(
-                          _isSubmitting ? 'Mengirim...' : 'Siram Sekarang',
-                          style: const TextStyle(fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 16),
                 _HistorySection(
                   firebaseService: _firebaseService,
                   deviceId: widget.deviceId,
                 ),
-              ],
-            ),
+              ];
+
+              return RefreshIndicator(
+                onRefresh: () async {
+                  await _firebaseService.fetchDevice(widget.deviceId);
+                },
+                child: isDesktop
+                    ? Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: ListView(
+                              padding: const EdgeInsets.all(24),
+                              children: leftColumn,
+                            ),
+                          ),
+                          Expanded(
+                            child: ListView(
+                              padding: const EdgeInsets.all(24),
+                              children: rightColumn,
+                            ),
+                          ),
+                        ],
+                      )
+                    : ListView(
+                        padding: const EdgeInsets.all(20),
+                        children: [
+                          ...leftColumn,
+                          const SizedBox(height: 16),
+                          ...rightColumn,
+                        ],
+                      ),
+              );
+            },
           ),
         );
       },
