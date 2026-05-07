@@ -28,7 +28,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
   bool _isSubmitting = false;
   bool? _effectiveOnline;
   Timer? _staleCheckTimer;
-  static const int _staleThresholdMs = 120000; // 2 minutes
+  static const int _staleThresholdMs = 30000; // 30 seconds
 
   Future<void> _triggerWater(int moisture) async {
     if (_isSubmitting) {
@@ -113,52 +113,34 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
         final currentEffectiveOnline = online && !isStale;
 
         // If effective online status changed, notify user briefly
-        if (_effectiveOnline == null || _effectiveOnline != currentEffectiveOnline) {
-          // ensure we update state once
+        if (_effectiveOnline != null && _effectiveOnline != currentEffectiveOnline) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             if (!mounted) return;
             final messenger = ScaffoldMessenger.of(context);
             if (currentEffectiveOnline) {
               messenger.showSnackBar(
-                const SnackBar(content: Text('Perangkat kembali terhubung')),
+                const SnackBar(content: Text('Perangkat kembali terhubung'), duration: Duration(seconds: 2)),
               );
             } else {
               messenger.showSnackBar(
-                const SnackBar(content: Text('Perangkat terputus / tidak merespon')),
+                const SnackBar(content: Text('Perangkat terputus / tidak merespon'), duration: Duration(seconds: 2)),
               );
             }
-            setState(() {
-              _effectiveOnline = currentEffectiveOnline;
-            });
           });
+        }
+        
+        if (_effectiveOnline != currentEffectiveOnline) {
+           _effectiveOnline = currentEffectiveOnline;
         }
 
         // Periodic stale check: ensure we keep evaluating staleness even when
         // no DB events arrive (in case of long silence)
         _staleCheckTimer?.cancel();
-        _staleCheckTimer = Timer.periodic(const Duration(seconds: 30), (_) async {
-          final latest = await _firebaseService.fetchDevice(widget.deviceId);
-          final latestLastUpdate = _readTimestamp(latest['last_update']);
-          final staleNow = latestLastUpdate == null
-              ? true
-              : DateTime.now().difference(latestLastUpdate).inMilliseconds > _staleThresholdMs;
-          final effectiveNow = _readBool(latest['online']) && !staleNow;
-          if (effectiveNow != _effectiveOnline) {
-            if (!mounted) return;
-            final messenger = ScaffoldMessenger.of(context);
-            if (effectiveNow) {
-              messenger.showSnackBar(
-                const SnackBar(content: Text('Perangkat kembali terhubung')),
-              );
-            } else {
-              messenger.showSnackBar(
-                const SnackBar(content: Text('Perangkat terputus / tidak merespon')),
-              );
-            }
-            setState(() {
-              _effectiveOnline = effectiveNow;
-            });
-          }
+        _staleCheckTimer = Timer(const Duration(seconds: 15), () {
+          if (!mounted) return;
+          setState(() {
+            // This force-rebuilds to re-calculate 'isStale' based on current time
+          });
         });
 
         final control = _readMap(deviceData['control']);
@@ -214,7 +196,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                 _DeviceSummaryCard(
                   deviceId: widget.deviceId,
                   status: status,
-                  online: online,
+                  online: currentEffectiveOnline,
                   moisture: moisture,
                   lastUpdate: lastUpdate,
                 ),
@@ -252,7 +234,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                       ),
                       _FriendlyInfoLine(
                         label: 'Kondisi perangkat',
-                        value: online ? 'Terhubung dan aktif' : 'Sedang offline',
+                        value: currentEffectiveOnline ? 'Terhubung dan aktif' : 'Sedang offline',
                       ),
                       _FriendlyInfoLine(
                         label: 'Durasi penyiraman',
@@ -324,7 +306,7 @@ class _HomeDashboardScreenState extends State<HomeDashboardScreen> {
                       ),
                       const SizedBox(height: 16),
                       ElevatedButton.icon(
-                        onPressed: _isSubmitting
+                        onPressed: _isSubmitting || !currentEffectiveOnline
                             ? null
                             : () => _triggerWater(moisture),
                         style: ElevatedButton.styleFrom(
@@ -789,6 +771,8 @@ String _friendlyStatus(String status) {
       return 'Sedang disiram';
     case 'offline':
       return 'Perangkat offline';
+    case 'sensor_error':
+      return 'Sensor bermasalah/terlepas';
     default:
       return status;
   }

@@ -39,8 +39,8 @@
       }
     },
     "devices": {
+      ".read": "auth != null",
       "$device_id": {
-        ".read": "auth != null",
         ".write": "auth != null && root.child('users').child(auth.uid).child('device_id').val() === $device_id",
         "moisture": {
           ".read": true,

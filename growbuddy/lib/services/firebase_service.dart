@@ -106,16 +106,60 @@ class FirebaseService {
   /// Check if a device ID is registered in the system
   /// Returns true if device exists, false otherwise
   Future<bool> deviceExists(String deviceId) async {
-    if (isDemoDevice(deviceId)) {
+    final cleanId = deviceId.trim();
+    if (cleanId.isEmpty) return false;
+    if (isDemoDevice(cleanId)) {
       return true; // Demo device always exists
     }
 
     try {
-      final snapshot = await deviceRef(deviceId).get();
+      // We check if the node 'devices/$deviceId' exists
+      final snapshot = await deviceRef(cleanId).child('status').get();
       return snapshot.exists;
     } catch (e) {
       return false;
     }
+  }
+
+  /// Stream all devices for admin dashboard
+  Stream<Map<String, Map<Object?, Object?>>> watchAllDevices() {
+    return _database.ref('devices').onValue.map((event) {
+      if (event.snapshot.value is! Map) return {};
+      final rawMap = Map<Object?, Object?>.from(event.snapshot.value as Map);
+      final result = <String, Map<Object?, Object?>>{};
+      rawMap.forEach((key, value) {
+        if (value is Map) {
+          result[key.toString()] = Map<Object?, Object?>.from(value);
+        }
+      });
+      return result;
+    });
+  }
+
+  /// Admin method to register a new device ID
+  Future<void> addNewDevice(String deviceId, {int pumpDuration = 3}) async {
+    final exists = await deviceExists(deviceId);
+    if (exists) {
+      throw Exception('Device ID sudah terdaftar.');
+    }
+
+    await deviceRef(deviceId).set({
+      'moisture': 0,
+      'status': 'new',
+      'online': false,
+      'last_update': ServerValue.timestamp,
+      'control': {
+        'siram': false,
+        'duration_seconds': pumpDuration,
+      },
+      'game': {
+        'score': 0,
+        'level': 1,
+      },
+      'settings': {
+        'pump_duration_seconds': pumpDuration,
+      }
+    });
   }
 
   Future<void> saveDeviceId({
@@ -329,7 +373,7 @@ class FirebaseService {
     final durationSeconds = await fetchPumpDurationSeconds(deviceId);
 
     if (isDemoDevice(deviceId)) {
-      _triggerDemoWater(
+      await _triggerDemoWater(
         uid: uid,
         durationSeconds: durationSeconds,
         moistureBefore: moistureBefore,
@@ -338,24 +382,35 @@ class FirebaseService {
     }
 
     final deviceReference = deviceRef(deviceId);
-    final historyReference = deviceReference.child('history').push();
+    
+    // 1. Kirim perintah siram
+    await deviceReference.child('control').update({
+      'siram': true,
+      'requested_at': ServerValue.timestamp,
+      'requested_by': uid,
+      'duration_seconds': durationSeconds,
+    });
+
+    // 2. Tunggu proses siram selesai + 3 detik tambahan untuk ESP update sensor
+    await Future.delayed(Duration(seconds: durationSeconds + 3));
+
+    // 3. Tarik data moisture riil setelah disiram
     final currentDeviceData = await fetchDevice(deviceId);
+    final realMoistureAfter = _readInt(currentDeviceData['moisture']);
+
+    // 4. Kalkulasi hasil game berdasarkan data riil
+    final historyReference = deviceReference.child('history').push();
     final gameResult = _buildGameResult(
       game: _readMap(currentDeviceData['game']),
       moistureBefore: moistureBefore,
-      moistureAfter: _estimateMoistureAfter(
-        moistureBefore: moistureBefore,
-        durationSeconds: durationSeconds,
-      ),
+      moistureAfter: realMoistureAfter,
       durationSeconds: durationSeconds,
       eventTimeMs: DateTime.now().millisecondsSinceEpoch,
     );
 
+    // 5. Update game dan tambahkan history
     await deviceReference.update({
-      'control/siram': true,
-      'control/requested_at': ServerValue.timestamp,
-      'control/requested_by': uid,
-      'control/duration_seconds': durationSeconds,
+      'control/siram': false,
       'game': gameResult.updatedGame,
       if (historyReference.key != null)
         'history/${historyReference.key}': {
@@ -369,11 +424,11 @@ class FirebaseService {
     });
   }
 
-  void _triggerDemoWater({
+  Future<void> _triggerDemoWater({
     required String uid,
     required int durationSeconds,
     required int moistureBefore,
-  }) {
+  }) async {
     _demoWaterTimer?.cancel();
 
     final now = DateTime.now().millisecondsSinceEpoch;
@@ -385,6 +440,16 @@ class FirebaseService {
       'duration_seconds': durationSeconds,
     });
 
+    _demoDeviceState = {
+      ..._demoDeviceState,
+      'status': 'watering',
+      'last_update': now,
+      'control': control,
+    };
+    _emitDemoDevice();
+
+    await Future.delayed(Duration(seconds: durationSeconds + 3));
+
     final moistureAfter = _estimateMoistureAfter(
       moistureBefore: moistureBefore,
       durationSeconds: durationSeconds,
@@ -394,16 +459,21 @@ class FirebaseService {
       moistureBefore: moistureBefore,
       moistureAfter: moistureAfter,
       durationSeconds: durationSeconds,
-      eventTimeMs: now,
+      eventTimeMs: DateTime.now().millisecondsSinceEpoch,
     );
+
+    final updatedControl = _readMap(_demoDeviceState['control']);
+    updatedControl['siram'] = false;
 
     _demoDeviceState = {
       ..._demoDeviceState,
-      'status': 'watering',
-      'last_update': now,
-      'control': control,
+      'status': 'idle',
+      'moisture': moistureAfter,
+      'last_update': DateTime.now().millisecondsSinceEpoch,
+      'control': updatedControl,
       'game': gameResult.updatedGame,
     };
+
     _demoHistory = [
       {
         ...gameResult.historyEntry,
@@ -411,28 +481,13 @@ class FirebaseService {
         'title': 'Siram Sekarang',
         'device_id': demoDeviceId,
         'triggered_by': uid,
-        'created_at': now,
+        'created_at': DateTime.now().millisecondsSinceEpoch,
       },
       ..._demoHistory,
     ];
 
     _emitDemoDevice();
     _emitDemoHistory();
-
-    _demoWaterTimer = Timer(Duration(seconds: durationSeconds), () {
-      final updatedControl = _readMap(_demoDeviceState['control']);
-      updatedControl['siram'] = false;
-
-      _demoDeviceState = {
-        ..._demoDeviceState,
-        'status': 'idle',
-        'moisture': moistureAfter,
-        'last_update': DateTime.now().millisecondsSinceEpoch,
-        'control': updatedControl,
-      };
-
-      _emitDemoDevice();
-    });
   }
 
   void _emitDemoDevice() {

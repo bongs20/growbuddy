@@ -21,9 +21,10 @@ const char* DEVICE_ID = "device_001";
 // TIMING (DI-OPTIMASI)
 // ======================
 const unsigned long SAMPLE_INTERVAL_MS = 10000;
-const unsigned long CONTROL_POLL_INTERVAL_MS = 500;
-const unsigned long WATER_COOLDOWN_MS = 3000;
-const unsigned long HEARTBEAT_INTERVAL_MS = 15000;
+const unsigned long CONTROL_POLL_INTERVAL_MS = 1000;
+const unsigned long WATER_COOLDOWN_MS = 5000;
+const unsigned long HEARTBEAT_INTERVAL_MS = 10000;
+const unsigned long CONFIG_FETCH_INTERVAL_MS = 30000;
 
 // ======================
 // SENSOR
@@ -43,6 +44,9 @@ unsigned long lastSampleMs = 0;
 unsigned long lastControlPollMs = 0;
 unsigned long lastWateredMs = 0;
 unsigned long lastHeartbeatMs = 0;
+unsigned long lastConfigFetchMs = 0;
+int pumpDurationSeconds = 3; // Default, will be updated from Firebase
+int calibrationOffset = 0; // Default offset
 
 // ======================
 // STRUCT
@@ -59,6 +63,14 @@ void connectWiFi() {
   if (WiFi.status() == WL_CONNECTED) return;
 
   WiFi.mode(WIFI_STA);
+  WiFi.disconnect(true); // Bersihkan sisa memori WiFi
+  delay(100);
+  
+  // Turunkan sedikit daya pancar WiFi (TX Power) untuk mencegah 
+  // lonjakan listrik (Brownout) saat dicolok ke powerbank / daya eksternal.
+  // Nilai standar adalah WIFI_POWER_19_5dBm, kita turunkan ke 8.5dBm
+  WiFi.setTxPower(WIFI_POWER_8_5dBm);
+
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("Connecting WiFi");
 
@@ -106,10 +118,49 @@ void httpPut(String url, String data) {
   http.end();
 }
 
-unsigned long currentUnixMillis() {
+void httpPatch(String url, String data) {
+  if (WiFi.status() != WL_CONNECTED) return;
+
+  HTTPClient http;
+  http.begin(url);
+  http.addHeader("Content-Type", "application/json");
+  http.PATCH(data);
+  http.end();
+}
+
+uint64_t currentUnixMillis() {
   time_t now = time(nullptr);
   if (now <= 1000) return 0;
-  return static_cast<unsigned long>(now) * 1000UL;
+  return static_cast<uint64_t>(now) * 1000ULL;
+}
+
+void fetchConfig() {
+  Serial.println("Fetching config from Firebase...");
+  String urlSettings = buildUrl("/devices/" + String(DEVICE_ID) + "/settings");
+  String payloadSettings = httpGet(urlSettings);
+  
+  if (payloadSettings.length() > 0 && payloadSettings != "null") {
+    DynamicJsonDocument doc(512);
+    DeserializationError err = deserializeJson(doc, payloadSettings);
+    if (!err) {
+      pumpDurationSeconds = doc["pump_duration_seconds"] | pumpDurationSeconds;
+      Serial.print("Config Updated! Pump Duration: ");
+      Serial.print(pumpDurationSeconds);
+      Serial.println("s");
+    }
+  }
+
+  String urlCal = buildUrl("/devices/" + String(DEVICE_ID) + "/calibration");
+  String payloadCal = httpGet(urlCal);
+  if (payloadCal.length() > 0 && payloadCal != "null") {
+    DynamicJsonDocument doc(512);
+    DeserializationError err = deserializeJson(doc, payloadCal);
+    if (!err) {
+      calibrationOffset = doc["offset_percent"] | calibrationOffset;
+      Serial.print("Config Updated! Calibration Offset: ");
+      Serial.println(calibrationOffset);
+    }
+  }
 }
 
 // ======================
@@ -117,11 +168,16 @@ unsigned long currentUnixMillis() {
 // ======================
 int readSoilPercent() {
   int raw = analogRead(SOIL_PIN);
+  if (raw < 100 || raw > 4000) {
+    return -1; // Sensor error / disconnected
+  }
   int pct = map(raw, SOIL_RAW_DRY, SOIL_RAW_WET, 0, 100);
+  pct += calibrationOffset;
   return constrain(pct, 0, 100);
 }
 
 String moistureLabelFromPct(int pct) {
+  if (pct == -1) return "sensor_error";
   if (pct < 25) return "critical_dry";
   if (pct < 40) return "dry";
   if (pct <= 70) return "healthy";
@@ -131,26 +187,36 @@ String moistureLabelFromPct(int pct) {
 
 void updateDeviceState(int moisture, const String& status) {
   String base = "/devices/" + String(DEVICE_ID);
-  unsigned long nowMs = currentUnixMillis();
+  uint64_t nowMs = currentUnixMillis();
 
-  httpPut(buildUrl(base + "/moisture"), String(moisture));
-  httpPut(buildUrl(base + "/status"), "\"" + status + "\"");
-  httpPut(buildUrl(base + "/online"), "true");
+  StaticJsonDocument<256> doc;
+  doc["moisture"] = moisture == -1 ? 0 : moisture;
+  doc["status"] = status;
+  doc["online"] = true;
   if (nowMs > 0) {
-    httpPut(buildUrl(base + "/last_update"), String(nowMs));
+    doc["last_update"] = nowMs;
   }
+
+  String json;
+  serializeJson(doc, json);
+  httpPatch(buildUrl(base), json);
 }
 
 void sendHeartbeat() {
   String base = "/devices/" + String(DEVICE_ID);
-  unsigned long nowMs = currentUnixMillis();
+  uint64_t nowMs = currentUnixMillis();
 
-  httpPut(buildUrl(base + "/online"), "true");
+  StaticJsonDocument<256> doc;
+  doc["online"] = true;
   if (nowMs > 0) {
-    httpPut(buildUrl(base + "/last_update"), String(nowMs));
+    doc["last_update"] = nowMs;
   }
-  httpPut(buildUrl(base + "/fw_version"), "\"esp32-rest-3.0.0\"");
-  httpPut(buildUrl(base + "/wifi_ssid"), "\"" + String(WIFI_SSID) + "\"");
+  doc["fw_version"] = "esp32-rest-3.1.0";
+  doc["wifi_ssid"] = String(WIFI_SSID);
+
+  String json;
+  serializeJson(doc, json);
+  httpPatch(buildUrl(base), json);
 }
 
 // ======================
@@ -161,10 +227,12 @@ void startPump(unsigned long durationMs) {
   pumpActive = true;
   pumpStart = millis();
   pumpDuration = durationMs;
-  Serial.println("Pompa ON");
+  Serial.print("Pompa ON selama ");
+  Serial.print(durationMs / 1000);
+  Serial.println(" detik");
 
   int moisture = readSoilPercent();
-  updateDeviceState(moisture, "watering");
+  updateDeviceState(moisture, moisture == -1 ? "sensor_error" : "watering");
 }
 
 // ======================
@@ -179,6 +247,25 @@ void setup() {
 
   connectWiFi();
   configTime(0, 0, "pool.ntp.org", "time.google.com");
+
+  // Tunggu sampai waktu sinkron
+  Serial.print("Menunggu sinkronisasi waktu NTP");
+  time_t now = time(nullptr);
+  int ntp_timeout = 0;
+  while (now < 24 * 3600 && ntp_timeout < 20) {
+    delay(500);
+    Serial.print(".");
+    now = time(nullptr);
+    ntp_timeout++;
+  }
+  if (now > 24 * 3600) {
+    Serial.println("\nWaktu tersinkron!");
+  } else {
+    Serial.println("\nGagal sinkron waktu, beberapa fitur timestamp mungkin tidak akurat.");
+  }
+  
+  fetchConfig(); // Ambil konfigurasi dari Firebase
+  lastConfigFetchMs = millis();
 
   int moisture = readSoilPercent();
   updateDeviceState(moisture, moistureLabelFromPct(moisture));
@@ -231,6 +318,14 @@ void loop() {
   }
 
   // ======================
+  // FETCH CONFIG PERIODIK
+  // ======================
+  if (millis() - lastConfigFetchMs > CONFIG_FETCH_INTERVAL_MS) {
+    lastConfigFetchMs = millis();
+    fetchConfig();
+  }
+
+  // ======================
   // CEK PERINTAH SIRAM
   // ======================
   if (millis() - lastControlPollMs > CONTROL_POLL_INTERVAL_MS) {
@@ -250,13 +345,13 @@ void loop() {
       if (siram) {
 
         if (pumpActive) {
-          continue;
+          return;
         }
 
         // cooldown biar tidak spam
         if (millis() - lastWateredMs > WATER_COOLDOWN_MS) {
 
-          int durasi = doc["duration_seconds"] | 3;
+          int durasi = doc["duration_seconds"] | pumpDurationSeconds;
 
           // reset ke false
           httpPut(buildUrl("/devices/" + String(DEVICE_ID) + "/control/siram"), "false");

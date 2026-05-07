@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'firebase_options.dart';
 import 'screens/device_selection.dart';
 import 'screens/device_shell_screen.dart';
+import 'screens/admin_login_screen.dart';
+import 'screens/admin_dashboard_screen.dart';
 import 'services/firebase_service.dart';
 
 Future<void> main() async {
@@ -54,6 +56,10 @@ class GrowBuddyApp extends StatelessWidget {
         ),
       ),
       home: const AppRoot(),
+      routes: {
+        '/admin-login': (context) => const AdminLoginScreen(),
+        '/admin-dashboard': (context) => const AdminDashboardScreen(),
+      },
     );
   }
 }

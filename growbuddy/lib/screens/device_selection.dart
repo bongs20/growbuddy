@@ -45,6 +45,20 @@ class _DeviceSelectionState extends State<DeviceSelection> {
     final deviceId = _controller.text.trim();
 
     try {
+      final exists = await _firebaseService.deviceExists(deviceId);
+      
+      if (!mounted) return;
+
+      if (!exists) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('ID Perangkat "$deviceId" tidak ditemukan! Silakan hubungi admin atau masukkan ID yang benar.'),
+            backgroundColor: Colors.redAccent,
+          ),
+        );
+        return;
+      }
+
       await _firebaseService.saveDeviceId(uid: user.uid, deviceId: deviceId);
 
       if (!mounted) {
@@ -59,7 +73,7 @@ class _DeviceSelectionState extends State<DeviceSelection> {
 
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text('Gagal menyimpan device: $error')));
+      ).showSnackBar(SnackBar(content: Text('Gagal menghubungkan device: $error')));
     } finally {
       if (mounted) {
         setState(() {
@@ -67,6 +81,11 @@ class _DeviceSelectionState extends State<DeviceSelection> {
         });
       }
     }
+  }
+
+  void _goToAdminLogin() {
+    // I'll create this screen next
+    Navigator.of(context).pushNamed('/admin-login');
   }
 
   void _useDemoDevice() {
@@ -216,6 +235,17 @@ class _DeviceSelectionState extends State<DeviceSelection> {
                               'Hubungkan Perangkat',
                               style: TextStyle(fontWeight: FontWeight.w700),
                             ),
+                    ),
+                    const SizedBox(height: 12),
+                    TextButton(
+                      onPressed: _goToAdminLogin,
+                      child: const Text(
+                        'Masuk sebagai Admin',
+                        style: TextStyle(
+                          color: Color(0xFF5E6653),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                   ],
                 ),
