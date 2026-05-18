@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.MissionsController">
+    <content>
+        <StackPane style="-fx-background-color: transparent;">
+            <VBox spacing="24.0" maxWidth="800.0">
+                <padding>
+                    <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                </padding>
+                <children>
+                
+                <!-- Top Bar -->
+                <HBox alignment="CENTER_LEFT" spacing="12.0" style="-fx-background-color: rgba(255,255,255,0.86); -fx-background-radius: 16; -fx-padding: 12 20; -fx-effect: dropshadow(gaussian, rgba(136,192,112,0.08), 20, 0, 0, 4);">
+                    <children>
+                        <Label style="-fx-font-size: 20px; -fx-font-weight: 800; -fx-text-fill: #16A34A;" text="Progress Tanaman" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="moistureLabel" style="-fx-background-color: #DFF4E2; -fx-text-fill: #376A25; -fx-padding: 8 12; -fx-background-radius: 999; -fx-font-weight: 700;" text="Moisture 0%" />
+                    </children>
+                </HBox>
+
+                <!-- Level Section -->
+                <VBox spacing="14.0" style="-fx-background-color: #FAF4DE; -fx-background-radius: 32; -fx-padding: 24; -fx-effect: dropshadow(gaussian, rgba(136,192,112,0.08), 20, 0, 0, 4);">
+                    <children>
+                        <HBox alignment="BOTTOM_LEFT">
+                            <children>
+                                <VBox>
+                                    <children>
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #376A25; -fx-letter-spacing: 0.9;" text="STATUS PAHLAWAN" />
+                                        <Label fx:id="levelLabel" style="-fx-font-size: 38px; -fx-font-weight: 800; -fx-text-fill: #376A25;" text="Level 0" />
+                                    </children>
+                                </VBox>
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label fx:id="xpLabel" style="-fx-font-size: 16px; -fx-font-weight: 600; -fx-text-fill: #42493D;" text="0 / 100 XP" />
+                            </children>
+                        </HBox>
+                        
+                        <ProgressBar fx:id="xpProgress" prefHeight="16.0" prefWidth="Infinity" progress="0.0" style="-fx-accent: #376A25; -fx-control-inner-background: #E8E3CD; -fx-background-radius: 999; -fx-border-radius: 999;" />
+                        
+                        <Label fx:id="xpDescLabel" style="-fx-font-size: 16px; -fx-font-style: italic; -fx-text-fill: #42493D;" text="XP diperlukan untuk naik level." wrapText="true" />
+                        <Label style="-fx-font-size: 13px; -fx-text-fill: #5E6653;" text="Penyiraman dilakukan di waktu yang tepat." wrapText="true" />
+                    </children>
+                </VBox>
+
+                <!-- Mission Section -->
+                <VBox spacing="16.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT">
+                            <children>
+                                <Label style="-fx-font-size: 30px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Misi Hari Ini" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #376A25;" text="+150 XP" />
+                            </children>
+                        </HBox>
+
+                        <!-- Mission Card 1 -->
+                        <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 28; -fx-border-color: #AEEDD5; -fx-border-width: 2; -fx-border-radius: 28; -fx-padding: 16; -fx-effect: dropshadow(gaussian, rgba(136,192,112,0.08), 20, 0, 0, 4);">
+                            <children>
+                                <HBox alignment="TOP_LEFT" spacing="12.0">
+                                    <children>
+                                        <Label alignment="CENTER" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #AEEDD5; -fx-background-radius: 16; -fx-text-fill: #316D5B; -fx-font-size: 16px; -fx-font-weight: 800;" text="H2O" />
+                                        <VBox HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Siram dengan ritme sehat 3x" />
+                                                <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #2C6956;" text="+50 XP" />
+                                            </children>
+                                        </VBox>
+                                        <Label style="-fx-background-color: #FFE088; -fx-background-radius: 999; -fx-padding: 6 10; -fx-text-fill: #241A00; -fx-font-weight: 800; -fx-font-size: 11px;" text="OK" />
+                                    </children>
+                                </HBox>
+                                <HBox>
+                                    <children>
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #42493D;" text="Progres" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #42493D;" text="3 / 3" />
+                                    </children>
+                                </HBox>
+                                <ProgressBar prefHeight="12.0" prefWidth="Infinity" progress="1.0" style="-fx-accent: #2C6956; -fx-control-inner-background: #E8E3CD; -fx-background-radius: 999; -fx-border-radius: 999;" />
+                            </children>
+                        </VBox>
+
+                        <!-- Mission Card 2 -->
+                        <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 28; -fx-border-color: #AEEDD5; -fx-border-width: 2; -fx-border-radius: 28; -fx-padding: 16; -fx-effect: dropshadow(gaussian, rgba(136,192,112,0.08), 20, 0, 0, 4);">
+                            <children>
+                                <HBox alignment="TOP_LEFT" spacing="12.0">
+                                    <children>
+                                        <Label alignment="CENTER" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #88C070; -fx-background-radius: 16; -fx-text-fill: #1C4E0B; -fx-font-size: 16px; -fx-font-weight: 800;" text="ENV" />
+                                        <VBox HBox.hgrow="ALWAYS">
+                                            <children>
+                                                <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Jaga kelembapan di zona aman" />
+                                                <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #376A25;" text="+100 XP" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <HBox>
+                                    <children>
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #42493D;" text="Estimasi stabil" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #42493D;" text="12 jam" />
+                                    </children>
+                                </HBox>
+                                <ProgressBar prefHeight="12.0" prefWidth="Infinity" progress="0.5" style="-fx-accent: #376A25; -fx-control-inner-background: #E8E3CD; -fx-background-radius: 999; -fx-border-radius: 999;" />
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+            </children>
+        </VBox>
+        </StackPane>
+    </content>
+</ScrollPane>

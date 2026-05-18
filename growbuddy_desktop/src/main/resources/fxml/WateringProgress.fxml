@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="480.0" style="-fx-background-color: #FFF9E7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.WateringProgressController">
+   <children>
+      <VBox alignment="CENTER" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="0.0">
+         <children>
+            
+            <Label alignment="CENTER" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: rgba(136,192,112,0.2); -fx-background-radius: 999; -fx-text-fill: #376A25; -fx-font-size: 50px;" text="⏳" />
+            
+            <Label style="-fx-font-size: 24px; -fx-font-weight: 800; -fx-text-fill: #1E1C0F;" text="Menyiram Tanaman" />
+            
+            <Label style="-fx-font-size: 16px; -fx-text-fill: #5E6653;" text="Sistem sedang bekerja. Mohon tunggu beberapa saat sampai proses selesai." textAlignment="CENTER" wrapText="true" />
+            
+            <ProgressBar fx:id="progressBar" prefHeight="16.0" prefWidth="Infinity" progress="0.5" style="-fx-accent: #376A25; -fx-control-inner-background: #E8E3CD; -fx-background-radius: 999; -fx-border-radius: 999;" />
+            
+            <Label fx:id="statusLabel" style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #42493D;" text="Memproses..." />
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

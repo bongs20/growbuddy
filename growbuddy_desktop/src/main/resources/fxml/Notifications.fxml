@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.NotificationsController">
+    <content>
+        <VBox fx:id="notificationsContainer" spacing="24.0" maxWidth="800.0" alignment="TOP_CENTER">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
+            <children>
+                <Label styleClass="heading" text="Notifikasi" />
+                
+                <!-- Notification Cards will be added here dynamically -->
+            </children>
+        </VBox>
+    </content>
+</ScrollPane>

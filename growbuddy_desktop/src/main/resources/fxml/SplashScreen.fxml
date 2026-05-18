@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+
+<StackPane style="-fx-background-color: #FFF9E7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.SplashScreenController">
+   <children>
+      <StackPane prefHeight="800.0" prefWidth="1200.0">
+         <children>
+            <!-- Decorative Blobs -->
+            <Circle fill="#88c07033" radius="250.0" StackPane.alignment="TOP_RIGHT">
+               <StackPane.margin>
+                  <Insets right="-100.0" top="-100.0" />
+               </StackPane.margin>
+               <effect>
+                  <DropShadow color="#88c070" height="200.0" radius="99.5" width="200.0" />
+               </effect>
+            </Circle>
+            <Circle fill="#b1efd840" radius="200.0" StackPane.alignment="BOTTOM_LEFT">
+               <StackPane.margin>
+                  <Insets bottom="-80.0" left="-80.0" />
+               </StackPane.margin>
+               <effect>
+                  <DropShadow color="#b1efd8" height="200.0" radius="99.5" width="200.0" />
+               </effect>
+            </Circle>
+
+            <!-- Main Content -->
+            <VBox alignment="CENTER" spacing="24.0" maxWidth="600.0">
+               <children>
+                  <!-- Logo Box -->
+                  <StackPane maxHeight="120.0" maxWidth="120.0" prefHeight="120.0" prefWidth="120.0" style="-fx-background-color: white; -fx-background-radius: 32;">
+                     <effect>
+                        <DropShadow color="#00800014" height="40.0" radius="19.5" width="40.0" />
+                     </effect>
+                     <children>
+                        <Label style="-fx-font-size: 64px; -fx-text-fill: #059669;" text="✿" />
+                     </children>
+                  </StackPane>
+                  
+                  <Label style="-fx-font-size: 48px; -fx-font-weight: 900; -fx-text-fill: #0F172A;" text="GrowBuddy">
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </Label>
+                  
+                  <!-- Illustration Card -->
+                  <StackPane maxHeight="360.0" maxWidth="360.0" prefHeight="360.0" prefWidth="360.0" style="-fx-background-color: rgba(255, 255, 255, 0.4); -fx-background-radius: 48;">
+                     <effect>
+                        <DropShadow color="#0080000f" height="36.0" radius="17.5" width="36.0" />
+                     </effect>
+                     <children>
+                        <!-- We will set the image from controller or just use a placeholder -->
+                        <ImageView fx:id="illustrationImage" fitHeight="320.0" fitWidth="320.0" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/growbuddy_splash.png" />
+                            </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  
+                  <Label style="-fx-font-size: 20px; -fx-font-weight: 800; -fx-text-fill: #64748B;" text="Smart Plant Watering System">
+                     <VBox.margin>
+                        <Insets top="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  
+                  <!-- Progress Bar -->
+                  <ProgressBar fx:id="progressBar" prefHeight="12.0" prefWidth="300.0" progress="0.0" style="-fx-accent: #059669; -fx-control-inner-background: #E2E8F0; -fx-background-radius: 999; -fx-border-radius: 999;">
+                     <VBox.margin>
+                        <Insets top="16.0" />
+                     </VBox.margin>
+                  </ProgressBar>
+                  
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: 800; -fx-text-fill: #94A3B8; -fx-letter-spacing: 1.5;" text="Menyiapkan Workspace..." />
+               </children>
+            </VBox>
+
+            <!-- Footer -->
+            <Label alignment="CENTER" opacity="0.6" style="-fx-font-size: 12px; -fx-text-fill: #94A3B8; -fx-font-weight: 700;" text="Version 1.0.2 • Powered by GrowBuddy Desktop" StackPane.alignment="BOTTOM_CENTER">
+               <StackPane.margin>
+                  <Insets bottom="32.0" />
+               </StackPane.margin>
+            </Label>
+         </children>
+      </StackPane>
+   </children>
+</StackPane>

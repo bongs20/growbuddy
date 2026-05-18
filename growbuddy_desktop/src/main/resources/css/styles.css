@@ -1,0 +1,140 @@
+.root {
+    -fx-background-color: #F8FAFC;
+    -fx-font-family: "Plus Jakarta Sans", "Segoe UI", Arial, sans-serif;
+}
+
+.heading {
+    -fx-text-fill: #1E293B;
+    -fx-font-size: 32px;
+    -fx-font-weight: 800;
+}
+
+.subheading {
+    -fx-text-fill: #64748B;
+    -fx-font-size: 16px;
+}
+
+.card {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 24;
+    -fx-padding: 32;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 16, 0, 0, 8);
+}
+
+.card-device {
+    -fx-background-color: linear-gradient(to bottom right, #E0F2FE, #FFFFFF);
+    -fx-border-color: #BAE6FD;
+    -fx-border-radius: 24;
+    -fx-border-width: 1;
+}
+
+.text-bold {
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.text-green {
+    -fx-text-fill: #059669;
+}
+
+.text-gray {
+    -fx-text-fill: #64748B;
+}
+
+.btn-primary {
+    -fx-background-color: linear-gradient(to bottom right, #059669, #047857);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 12;
+    -fx-padding: 14 28 14 28;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(5, 150, 105, 0.3), 10, 0, 0, 4);
+}
+
+.btn-primary:hover {
+    -fx-background-color: linear-gradient(to bottom right, #047857, #065F46);
+    -fx-effect: dropshadow(three-pass-box, rgba(5, 150, 105, 0.5), 14, 0, 0, 6);
+}
+
+.btn-primary:disabled {
+    -fx-background-color: #94A3B8;
+    -fx-effect: none;
+}
+
+.badge-online {
+    -fx-background-color: #D1FAE5;
+    -fx-text-fill: #065F46;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 24;
+    -fx-font-weight: 800;
+}
+
+.badge-offline {
+    -fx-background-color: #FEE2E2;
+    -fx-text-fill: #991B1B;
+    -fx-padding: 8 16 8 16;
+    -fx-background-radius: 24;
+    -fx-font-weight: 800;
+}
+
+.progress-bar-green {
+    -fx-accent: #34D399;
+    -fx-control-inner-background: #F1F5F9;
+    -fx-pref-height: 24px;
+}
+
+.progress-bar-green .bar {
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+}
+.progress-bar-green .track {
+    -fx-background-radius: 12;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #FFFFFF, #F8FAFC);
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 1 0 0;
+}
+
+.sidebar-title {
+    -fx-text-fill: #0F172A;
+    -fx-font-size: 24px;
+    -fx-font-weight: 900;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #64748B;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-background-radius: 12;
+    -fx-cursor: hand;
+    -fx-alignment: BASELINE_LEFT;
+    -fx-padding: 16 24 16 24;
+}
+
+.nav-button:hover {
+    -fx-background-color: #F1F5F9;
+    -fx-text-fill: #334155;
+}
+
+.nav-active {
+    -fx-background-color: #ECFDF5;
+    -fx-text-fill: #059669;
+}
+
+/* SVG Icon styles */
+.nav-button .svg-icon {
+    -fx-fill: #64748B;
+}
+
+.nav-button:hover .svg-icon {
+    -fx-fill: #334155;
+}
+
+.nav-active .svg-icon {
+    -fx-fill: #059669;
+}

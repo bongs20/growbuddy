@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
+}
+
+group = 'com.bongs20.growbuddy'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "17.0.6"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+dependencies {
+    // Firebase Admin SDK
+    implementation 'com.google.firebase:firebase-admin:9.2.0'
+    
+    // SLF4J (Firebase Admin SDK uses it)
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+}
+
+application {
+    mainClass = 'com.bongs20.growbuddy.Main'
+}

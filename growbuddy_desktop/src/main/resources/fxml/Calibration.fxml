@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="480.0" style="-fx-background-color: #FFF9E7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.CalibrationController">
+   <children>
+      
+      <!-- Top Bar -->
+      <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: rgba(255,255,255,0.8);" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#handleBack" style="-fx-background-color: #F4EED8; -fx-background-radius: 20; -fx-text-fill: #1E1C0F; -fx-font-weight: bold; -fx-cursor: hand;" text="←">
+               <HBox.margin>
+                  <Insets left="16.0" />
+               </HBox.margin>
+            </Button>
+            <Label alignment="CENTER" maxWidth="Infinity" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #376A25;" text="Kalibrasi Sensor" HBox.hgrow="ALWAYS" />
+            <Label prefWidth="48.0" /> <!-- Spacer -->
+         </children>
+      </HBox>
+
+      <VBox alignment="TOP_CENTER" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="80.0">
+         <children>
+            
+            <Label style="-fx-font-size: 16px; -fx-text-fill: #5E6653;" text="Sesuaikan nilai kalibrasi sensor agar pembacaan kelembapan tanah akurat dengan kondisi nyata menggunakan persentase offset." textAlignment="CENTER" wrapText="true" />
+            
+            <VBox spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 24; -fx-padding: 24; -fx-effect: dropshadow(gaussian, rgba(136,192,112,0.1), 20, 0, 0, 4);">
+               <children>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: 700; -fx-text-fill: #42493D;" text="Offset Kalibrasi" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="offsetLabel" style="-fx-font-size: 20px; -fx-font-weight: 900; -fx-text-fill: #376A25;" text="0%" />
+                     </children>
+                  </HBox>
+                  
+                  <Slider fx:id="offsetSlider" min="-100.0" max="100.0" value="0.0" showTickLabels="true" showTickMarks="true" majorTickUnit="50.0" minorTickCount="5" style="-fx-cursor: hand;" />
+                  
+                  <Label style="-fx-font-size: 12px; -fx-text-fill: #72796C;" text="Gunakan slider di atas untuk menambah (+) atau mengurangi (-) pembacaan sensor tanah." textAlignment="CENTER" wrapText="true" />
+                  
+                  <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#handleSave" prefHeight="54.0" style="-fx-background-color: #376A25; -fx-text-fill: white; -fx-background-radius: 18; -fx-font-weight: 700; -fx-font-size: 16px;" text="Simpan Kalibrasi" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.HistoryController">
+    <content>
+        <StackPane style="-fx-background-color: transparent;">
+            <VBox fx:id="historyContainer" spacing="24.0" maxWidth="800.0">
+                <padding>
+                    <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                </padding>
+                <children>
+                <Label styleClass="heading" text="Riwayat Penyiraman" />
+                <Label style="-fx-text-fill: #72796C; -fx-font-size: 14px;" text="Lihat hasil penyiraman terbaru dan dampaknya ke kesehatan tanaman." wrapText="true" />
+                
+                <!-- History Items will be added here programmatically -->
+            </children>
+        </VBox>
+        </StackPane>
+    </content>
+</ScrollPane>

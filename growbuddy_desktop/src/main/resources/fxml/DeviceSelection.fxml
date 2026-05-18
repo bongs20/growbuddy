@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #F8FAFC;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.DeviceSelectionController">
+   <children>
+      <VBox alignment="CENTER" maxWidth="500.0" spacing="24.0">
+         <children>
+            <!-- Card Hubungkan Device -->
+            <VBox alignment="CENTER" spacing="12.0" styleClass="card" style="-fx-background-radius: 32; -fx-padding: 40;">
+               <children>
+                  <Label style="-fx-font-size: 28px; -fx-font-weight: 900; -fx-text-fill: #0F172A;" text="Hubungkan Device" textAlignment="CENTER" wrapText="true" />
+                  <Label style="-fx-font-size: 16px; -fx-text-fill: #64748B;" text="Masukkan ID perangkat GrowBuddy kamu untuk mulai memantau tanaman." textAlignment="CENTER" wrapText="true" />
+                  
+                  <Label text="" /> <!-- Spacer -->
+
+                  <!-- Device ID Input -->
+                  <TextField fx:id="deviceIdInput" prefHeight="56.0" promptText="contoh: device_001" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #E2E8F0; -fx-font-size: 16px;" />
+
+                  <!-- Hubungkan Button -->
+                  <Button fx:id="btnConnect" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleConnectDevice" prefHeight="56.0" styleClass="btn-primary" text="Hubungkan Perangkat" />
+                  
+                  <Label fx:id="errorLabel" style="-fx-text-fill: #991B1B; -fx-font-size: 14px;" visible="false" wrapText="true" />
+               </children>
+            </VBox>
+
+            <!-- Tes Tanpa ESP Fisik -->
+            <HBox alignment="CENTER_LEFT" spacing="16.0" styleClass="card" style="-fx-background-color: #F1F5F9; -fx-padding: 24; -fx-background-radius: 24;">
+               <children>
+                  <VBox HBox.hgrow="ALWAYS" spacing="4.0">
+                     <children>
+                        <Label style="-fx-font-weight: 800; -fx-font-size: 16px; -fx-text-fill: #1E293B;" text="Tes Tanpa Fisik" />
+                        <Label style="-fx-font-size: 14px; -fx-text-fill: #64748B;" text="Gunakan demo untuk mencoba tanpa hardware." wrapText="true" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="btnDemo" mnemonicParsing="false" onAction="#handleDemoDevice" style="-fx-background-color: white; -fx-border-color: #CBD5E1; -fx-border-radius: 12; -fx-background-radius: 12; -fx-text-fill: #334155; -fx-font-weight: bold; -fx-padding: 12 24;" text="Demo" />
+               </children>
+            </HBox>
+
+            <VBox alignment="CENTER" maxWidth="Infinity" style="-fx-padding: 16 0 0 0;">
+               <children>
+                  <Button fx:id="btnAdmin" mnemonicParsing="false" onAction="#handleAdminLogin" style="-fx-background-color: transparent; -fx-text-fill: #64748B; -fx-font-weight: 700; -fx-font-size: 16px;" text="Masuk sebagai Admin" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</StackPane>

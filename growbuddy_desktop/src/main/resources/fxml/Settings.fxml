@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.StackPane?>
+
+<ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.SettingsController">
+    <content>
+        <StackPane style="-fx-background-color: transparent;">
+            <VBox spacing="24.0" maxWidth="800.0">
+                <padding>
+                    <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                </padding>
+                <children>
+                
+                <!-- Profile Card -->
+                <HBox alignment="CENTER_LEFT" spacing="16.0" style="-fx-background-color: linear-gradient(to bottom right, #376A25, #88C070); -fx-background-radius: 28; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(55,106,37,0.18), 24, 0, 0, 10);">
+                    <children>
+                        <Label alignment="CENTER" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: rgba(255,255,255,0.16); -fx-background-radius: 999; -fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: 800;" text="PH" />
+                        <VBox HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: 800;" text="Plant Hero" />
+                                <Label style="-fx-text-fill: #F4FBEF; -fx-font-weight: 500;" text="Monstera Deliciosa • Rumah Kaca" />
+                                <Label style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: 700;" text="Perangkat aktif: device_001">
+                                   <VBox.margin>
+                                      <Insets top="10.0" />
+                                   </VBox.margin>
+                                </Label>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- Header -->
+                <VBox spacing="6.0">
+                    <children>
+                        <Label style="-fx-font-size: 28px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Pengaturan" />
+                        <Label style="-fx-font-size: 16px; -fx-text-fill: #42493D;" text="Kelola profil, perangkat, dan preferensi perawatan tanamanmu." wrapText="true" />
+                    </children>
+                </VBox>
+
+                <!-- Status Cards -->
+                <HBox spacing="16.0">
+                    <children>
+                        <VBox spacing="8.0" styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: #AEEDD5; -fx-background-radius: 12; -fx-text-fill: #316D5B; -fx-font-size: 11px; -fx-font-weight: 800;" text="NET" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label style="-fx-background-color: #B1EFD8; -fx-text-fill: #2C6956; -fx-padding: 4 8; -fx-background-radius: 999; -fx-font-size: 12px; -fx-font-weight: 700;" text="Kuat" />
+                                    </children>
+                                </HBox>
+                                <Region VBox.vgrow="ALWAYS" />
+                                <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #42493D; -fx-letter-spacing: 0.8;" text="WiFi Status" />
+                                <Label fx:id="wifiNameLabel" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="-" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="8.0" styleClass="card" HBox.hgrow="ALWAYS">
+                            <children>
+                                <HBox alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label alignment="CENTER" prefHeight="32.0" prefWidth="32.0" style="-fx-background-color: rgba(184,242,157,0.25); -fx-background-radius: 12; -fx-text-fill: #376A25; -fx-font-size: 11px; -fx-font-weight: 800;" text="ESP" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label style="-fx-text-fill: #376A25; -fx-font-size: 12px; -fx-font-weight: 700;" text="● Online" />
+                                    </children>
+                                </HBox>
+                                <Region VBox.vgrow="ALWAYS" />
+                                <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #42493D; -fx-letter-spacing: 0.8;" text="Status ESP32" />
+                                <Label fx:id="espStatusLabel" style="-fx-font-size: 18px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="-" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+
+                <!-- Setting Rows -->
+                <VBox spacing="12.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="card" style="-fx-padding: 16;">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #F4EED8; -fx-background-radius: 12; -fx-text-fill: #72796C; -fx-font-size: 13px; -fx-font-weight: 800;" text="DEV" />
+                                <VBox HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Perangkat terhubung" />
+                                        <Label fx:id="deviceIdLabel" style="-fx-font-size: 14px; -fx-text-fill: #42493D;" text="-" />
+                                    </children>
+                                </VBox>
+                                <Button mnemonicParsing="false" style="-fx-background-color: transparent; -fx-text-fill: #72796C; -fx-font-size: 14px; -fx-font-weight: 800;" text="C" />
+                            </children>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="card" style="-fx-padding: 16;">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(174,237,213,0.35); -fx-background-radius: 12; -fx-text-fill: #2C6956; -fx-font-size: 13px; -fx-font-weight: 800;" text="H2O" />
+                                <VBox HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Durasi pompa" />
+                                        <Label fx:id="pumpDurationLabel" style="-fx-font-size: 14px; -fx-text-fill: #42493D;" text="-" />
+                                    </children>
+                                </VBox>
+                                <Button mnemonicParsing="false" onAction="#handleEditPumpDuration" style="-fx-background-color: #EEE8D3; -fx-text-fill: #1E1C0F; -fx-background-radius: 12; -fx-font-weight: 700;" text="✎ Ubah" />
+                            </children>
+                        </HBox>
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="card" style="-fx-padding: 16;">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #EAF7EC; -fx-background-radius: 12; -fx-text-fill: #376A25; -fx-font-size: 13px; -fx-font-weight: 800;" text="USR" />
+                                <VBox HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Profil" />
+                                        <Label style="-fx-font-size: 14px; -fx-text-fill: #42493D;" text="Atur identitas dan preferensi tanaman" wrapText="true" />
+                                    </children>
+                                </VBox>
+                                <Button mnemonicParsing="false" onAction="#handleEditProfile" style="-fx-background-color: #EEE8D3; -fx-text-fill: #1E1C0F; -fx-background-radius: 12; -fx-font-weight: 700;" text="✎ Edit" />
+                            </children>
+                        </HBox>
+
+                        <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="card" style="-fx-padding: 16;">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(55,106,37,0.1); -fx-background-radius: 12; -fx-text-fill: #376A25; -fx-font-size: 13px; -fx-font-weight: 800;" text="CAL" />
+                                <VBox HBox.hgrow="ALWAYS">
+                                    <children>
+                                        <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Kalibrasi sensor" />
+                                        <Label style="-fx-font-size: 14px; -fx-text-fill: #42493D;" text="Sesuaikan persentase offset kelembapan tanah" wrapText="true" />
+                                    </children>
+                                </VBox>
+                                <Button mnemonicParsing="false" onAction="#handleEditCalibration" style="-fx-background-color: #EEE8D3; -fx-text-fill: #1E1C0F; -fx-background-radius: 12; -fx-font-weight: 700;" text="✎ Atur" />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Toggles -->
+                <VBox spacing="16.0" style="-fx-background-color: #FAF4DE; -fx-background-radius: 32; -fx-padding: 16;">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(55,106,37,0.1); -fx-background-radius: 12; -fx-text-fill: #376A25; -fx-font-size: 11px; -fx-font-weight: 800;" text="NOTI" />
+                                <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Notifikasi pintar" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <CheckBox selected="true" />
+                            </children>
+                        </HBox>
+                        
+                        <Region style="-fx-background-color: rgba(194,201,185,0.4); -fx-pref-height: 1;" />
+                        
+                        <HBox alignment="CENTER_LEFT" spacing="12.0">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: rgba(44,105,86,0.1); -fx-background-radius: 12; -fx-text-fill: #2C6956; -fx-font-size: 11px; -fx-font-weight: 800;" text="AUTO" />
+                                <Label style="-fx-font-size: 16px; -fx-font-weight: 700; -fx-text-fill: #1E1C0F;" text="Siram otomatis" />
+                                <Region HBox.hgrow="ALWAYS" />
+                                <CheckBox />
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+
+                <!-- Logout -->
+                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#handleUnlink" prefHeight="54.0" style="-fx-background-color: transparent; -fx-border-color: rgba(186,26,26,0.2); -fx-border-radius: 24; -fx-border-width: 2; -fx-text-fill: #BA1A1A; -fx-font-weight: 700; -fx-font-size: 16px;" text="Hapus Hubungan Perangkat" />
+                
+                <Label alignment="CENTER" maxWidth="Infinity" style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #72796C; -fx-letter-spacing: 0.8;" text="Versi Aplikasi 1.4.2 Desktop" />
+            </children>
+        </VBox>
+        </StackPane>
+    </content>
+</ScrollPane>

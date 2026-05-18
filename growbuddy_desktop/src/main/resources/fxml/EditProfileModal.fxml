@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="480.0" style="-fx-background-color: #FFF9E7; -fx-background-radius: 32; -fx-border-radius: 32; -fx-border-color: #E2E8F0; -fx-border-width: 1;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bongs20.growbuddy.controllers.EditProfileController">
+   <children>
+      <VBox alignment="CENTER" spacing="24.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="24.0">
+         <children>
+            
+            <Label alignment="CENTER" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: rgba(55,106,37,0.1); -fx-background-radius: 999; -fx-text-fill: #376A25; -fx-font-size: 32px; -fx-font-weight: 800;" text="USR" />
+            
+            <Label style="-fx-font-size: 22px; -fx-font-weight: 800; -fx-text-fill: #1E1C0F;" text="Edit Profil Tanaman" />
+            
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #5E6653;" text="Ubah tipe tanaman untuk membantu sistem menyesuaikan parameter pertumbuhan optimal." textAlignment="CENTER" wrapText="true" />
+            
+            <VBox spacing="12.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 16; -fx-effect: dropshadow(gaussian, rgba(136,192,112,0.06), 20, 0, 0, 4);" maxWidth="Infinity">
+               <children>
+                  <Label style="-fx-font-size: 12px; -fx-font-weight: 700; -fx-text-fill: #42493D;" text="TIPE TANAMAN" />
+                  <TextField fx:id="plantTypeInput" prefHeight="50.0" promptText="mis. Tomat, Cabai, Lidah Buaya" style="-fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #E2E8F0; -fx-font-size: 15px;" />
+               </children>
+            </VBox>
+            
+            <Region VBox.vgrow="ALWAYS" />
+            
+            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#handleSave" prefHeight="50.0" style="-fx-background-color: #376A25; -fx-text-fill: white; -fx-background-radius: 16; -fx-font-weight: 700; -fx-font-size: 15px;" text="Simpan Profil" />
+            <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#handleCancel" prefHeight="40.0" style="-fx-background-color: transparent; -fx-text-fill: #5E6653; -fx-font-weight: 700; -fx-font-size: 15px;" text="Batal" />
+
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

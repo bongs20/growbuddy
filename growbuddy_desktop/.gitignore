@@ -1,0 +1,25 @@
+# Gradle build outputs
+build/
+.gradle/
+out/
+
+# Gradle distribution ZIP and extracted folders
+gradle-8.5-bin.zip
+gradle-8.5/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+.factorypath
+
+# Firebase credentials (keep private)
+src/main/resources/serviceAccountKey.json
